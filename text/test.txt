@@ -1,0 +1,11 @@
+main(a,b,c){
+	var toast;
+	toast := 5;
+	if(toast=5){
+		var woah;
+		for(var i := 1;i<10;i:=i+1){
+			woah:=woah*2;
+		}
+	}
+	woah := toast+woah/2;
+}
