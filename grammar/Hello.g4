@@ -3,7 +3,7 @@ r : 'main('listvar'){'bloc'}';
 listvar : VAR
       | VAR','listvar;
 bloc : inst bloc|;
-inst : affct';'
+inst :  affct';'
 		| decl';'
 		| decaf';'
 		| comment
@@ -14,7 +14,7 @@ boucle : if2
      | while2
      | for2;
 
-comment: '/*'COMMENTBODY'*/';
+comment: '/*'(nb|','|';'|'!'|'.'|'?'|'*'|'/')*'*/';
 decaf: 'var'affct;
 if2: 'if('cond'){'bloc'}'elif*(else2|);
 elif: 'elif('cond'){'bloc'}';
@@ -35,8 +35,6 @@ factor : '-'factor | nb | '('op')';
 nb: CONST | VAR ;
 
 CONST: [0-9]+ ;
-VAR : [a-z]+ ;
-
-COMMENTBODY : [0-9a-zA-Z]+ ;
+VAR : [a-zA-Z]+ ;
 
 WS : [ \t\r\n]+ -> skip ;
