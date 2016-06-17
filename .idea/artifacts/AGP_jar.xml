@@ -4,7 +4,6 @@
     <root id="archive" name="AGP.jar">
       <element id="module-output" name="AGP" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/antlr-4.5.3-complete.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/out/artifacts/Parser_jar/Parser.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
