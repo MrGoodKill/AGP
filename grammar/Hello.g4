@@ -4,15 +4,17 @@ listvar : VAR
       | VAR','listvar;
 bloc : inst bloc|;
 inst : affct';'
-       | decl';'
-       | decaf';'
-       | boucle;
+		| decl';'
+		| decaf';'
+		| comment
+		| boucle;
 decl : 'var'listvar;
 affct : VAR':='op;
 boucle : if2
      | while2
      | for2;
-	 
+
+comment: '/*'COMMENTBODY'*/';
 decaf: 'var'affct;
 if2: 'if('cond'){'bloc'}';
 while2: 'while('cond'){'bloc'}';
@@ -28,9 +30,11 @@ cond:
 op : terme('+'terme | '-'terme)*;
 terme : factor('*'factor | '/'factor)*;
 factor : '-'factor | nb | '('op')';
-nb: CONST | VAR;
+nb: CONST | VAR ;
 
 CONST: [0-9]+ ;
 VAR : [a-z]+ ;
+
+COMMENTBODY : [0-9a-zA-Z]+ ;
 
 WS : [ \t\r\n]+ -> skip ;
