@@ -77,6 +77,16 @@ public interface HelloListener extends ParseTreeListener {
 	 */
 	void exitBoucle(HelloParser.BoucleContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link HelloParser#comment}.
+	 * @param ctx the parse tree
+	 */
+	void enterComment(HelloParser.CommentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HelloParser#comment}.
+	 * @param ctx the parse tree
+	 */
+	void exitComment(HelloParser.CommentContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link HelloParser#decaf}.
 	 * @param ctx the parse tree
 	 */
@@ -96,6 +106,26 @@ public interface HelloListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitIf2(HelloParser.If2Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link HelloParser#elif}.
+	 * @param ctx the parse tree
+	 */
+	void enterElif(HelloParser.ElifContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HelloParser#elif}.
+	 * @param ctx the parse tree
+	 */
+	void exitElif(HelloParser.ElifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HelloParser#else2}.
+	 * @param ctx the parse tree
+	 */
+	void enterElse2(HelloParser.Else2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link HelloParser#else2}.
+	 * @param ctx the parse tree
+	 */
+	void exitElse2(HelloParser.Else2Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link HelloParser#while2}.
 	 * @param ctx the parse tree
