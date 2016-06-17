@@ -16,3 +16,5 @@ hs_err_pid*
 /miniLanguageLexer.tokens
 /miniLanguageListener.java
 /miniLanguageParser.java
+/code
+/main(a,b,c){

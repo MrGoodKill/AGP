@@ -1,11 +1,32 @@
+
+
 main(a,b,c){
-	var toast;
-	toast := 5;
-	if(toast=5){
-		var woah;
-		for(var i := 1;i<10;i:=i+1){
-			woah:=woah*2;
+	var x;
+	x:=3;
+	while(x<3){
+		x:= x + 1;
+	}
+	for(var i:=0;i<4;i:=i+1){
+		if(a=4){
+			a:=(6+2)/4+12*9-4;	
+		}
+		else{
+			f:=8;
+		}
+		b:=8;
+		if(a=4){
+			a:=(6+2)/4+12*9-4;	
 		}
 	}
-	woah := toast+woah/2;
+	c:=9;
+	if(a=3){
+		c:=4;
+	}
+	elif(a=5){
+		c:=8;
+	}
+	elif(c=9){c:=a+b;}
+	else{
+		c:=9;
+	}
 }

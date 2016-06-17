@@ -14,7 +14,9 @@ boucle : if2
      | for2;
 	 
 decaf: 'var'affct;
-if2: 'if('cond'){'bloc'}';
+if2: 'if('cond'){'bloc'}'elif*(else2|);
+elif: 'elif('cond'){'bloc'}';
+else2: 'else{'bloc'}';
 while2: 'while('cond'){'bloc'}';
 for2:'for('decaf';'cond';'affct'){'bloc'}';
 
