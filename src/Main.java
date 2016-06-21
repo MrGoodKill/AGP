@@ -22,6 +22,6 @@ public class Main {
         HelloParser parser = new HelloParser( tokens );
         ParseTree tree = parser.r();
         ParseTreeWalker walker = new ParseTreeWalker();
-        walker.walk( new HelloWalker(), tree );
+        walker.walk( new HelloBaseListener(), tree );
     }
 }
