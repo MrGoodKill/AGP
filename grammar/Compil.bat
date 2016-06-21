@@ -11,4 +11,4 @@ echo.
 echo Termine !
 echo.
 echo.
-grun Hello r -gui test.txt
+pause
