@@ -56,30 +56,38 @@ declaffct returns[Decaf decaf]:
 	'var 'a=affct
 		{$decaf = new Decaf($a.aff);};
 		
-if2 returns[If2 i]:
-	'if('c=cond'){'b=bloc'}'
-		{$i = new If2($c.c,$b.bc);};
+//if2 returns[If2 i]:
+//	'if('c=cond'){'b=bloc'}'
+//		{$i = new If2($c.c,$b.bc);};
+
+if2 returns[If2 i]: 
+    'if('c=cond'){'b=bloc'}else{'b2=bloc'}' {$i = new If2($c.c,$b.bc,$b2.bc);}
+    | 'if('c=cond'){'b=bloc'}'{$i = new If2($c.c,$b.bc);};
+
+    
+//else2 returns [Else2 e]:
+//    'else{'b=bloc'}' {$e = new Else2($b.bc);};
+
 
 while2 returns[While2 w]:
 	'while('c=cond'){'b=bloc'}'
 		{$w = new While2($c.c,$b.bc);};
 
 cond returns[Cond c]:
-	(op1=operation'='op2=operation
-	| op1=operation'>'op2=operation
-	| op1=operation'<'op2=operation
-	| op1=operation'<='op2=operation
-	| op1=operation'>='op2=operation)
-		{$c = new Cond($op1.op,$op2.op);};
+	(op1=operation'='op2=operation {$c = new Cond($op1.op,$op2.op,"=");}
+	| op1=operation'>'op2=operation {$c = new Cond($op1.op,$op2.op,">");}
+	| op1=operation'<'op2=operation {$c = new Cond($op1.op,$op2.op,"<");}
+	| op1=operation'<='op2=operation {$c = new Cond($op1.op,$op2.op,"<=");}
+	| op1=operation'>='op2=operation) {$c = new Cond($op1.op,$op2.op,">=");};
 
 operation returns [Op op] :
-    f1=factor'+'op2=operation {$op=new Op($f1.f,$op2.op);}
-    | f1=factor'-'op2=operation {$op=new Op($f1.f,$op2.op);}
+    f1=factor'+'op2=operation {$op=new Op($f1.f,$op2.op,"+");}
+    | f1=factor'-'op2=operation {$op=new Op($f1.f,$op2.op,"-");}
     | f1=factor {$op=new Op($f1.f);};
     
 factor returns [Factor f] :
-    f1=factor'*'f2=final2 {$f=new Factor($f1.f,$f2.f);}
-    | f1=factor'/'f2=final2 {$f=new Factor($f1.f,$f2.f);}
+    f1=factor'*'f2=final2 {$f=new Factor($f1.f,$f2.f,"*");}
+    | f1=factor'/'f2=final2 {$f=new Factor($f1.f,$f2.f,"/");}
     | f3=final2 {$f=new Factor($f3.f);};
 	
 final2 returns [Final2 f] :
