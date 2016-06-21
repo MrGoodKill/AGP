@@ -1,7 +1,18 @@
+import java.io.File;
+import java.io.*;
+
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 
-public class HelloWalker extends HelloBaseListener {
+public class HelloWalker extends HelloBaseListener  {
+	
+	private Writer writer;
+	
+	public HelloWalker(Writer writer){
+		super();
+		this.writer = writer;
+		
+	}
 
     private int indent=0;
 
@@ -16,6 +27,7 @@ public class HelloWalker extends HelloBaseListener {
 
     public void enterDecl(HelloParser.DeclContext ctx) {
         System.out.println("DECLARATION de " + ctx.listvar().getText());
+        System.out.println("TEST:"+ctx.getText());
     }
 
     public void enterAffct(HelloParser.AffctContext ctx) {

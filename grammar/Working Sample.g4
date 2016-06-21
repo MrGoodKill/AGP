@@ -7,5 +7,4 @@ v=Var {$lv = new Listvar(new Var($v.getText()));};
 
 Var:[a-zA-Z]+;
 
-
 WS : [ \t\r\n]+ -> skip ;
