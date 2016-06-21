@@ -7,7 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acd5561c-1309-45a7-8457-a6fc830631f1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grammar/Compil.bat" afterPath="$PROJECT_DIR$/grammar/Compil.bat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grammar/Hello.g4" afterPath="$PROJECT_DIR$/grammar/Hello.g4" />
     </list>
     <ignored path="AGP.iws" />
@@ -602,15 +601,15 @@
       <option name="number" value="Default" />
       <updated>1466153489784</updated>
       <workItem from="1466153491153" duration="2272000" />
-      <workItem from="1466491137170" duration="5179000" />
+      <workItem from="1466491137170" duration="5608000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7451000" />
+    <option name="totallyTimeSpent" value="7880000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="976" height="1038" extended-state="1" />
+    <frame x="-8" y="0" width="976" height="1038" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
