@@ -1,5 +1,0 @@
-; First ASM code
-
-
-	SECTION .data
-

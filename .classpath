@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry excluding=".gitignore|Compil.bat|Hello.g4|Hello.tokens|HelloBaseListener.class|HelloBaseListener.java|HelloLexer.class|HelloLexer.java|HelloLexer.tokens|HelloListener.class|HelloListener.java|HelloParser$AffctContext.class|HelloParser$BlocContext.class|HelloParser$BoucleContext.class|HelloParser$CommentContext.class|HelloParser$CondContext.class|HelloParser$DecafContext.class|HelloParser$DeclContext.class|HelloParser$ElifContext.class|HelloParser$Else2Context.class|HelloParser$FactorContext.class|HelloParser$For2Context.class|HelloParser$If2Context.class|HelloParser$InstContext.class|HelloParser$ListvarContext.class|HelloParser$NbContext.class|HelloParser$OpContext.class|HelloParser$RContext.class|HelloParser$TermeContext.class|HelloParser$While2Context.class|HelloParser.class|HelloParser.java|antlr4.bat|grun.bat|test.txt" kind="src" path="grammar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Javalib/antlr-4.5.3-complete.jar"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>

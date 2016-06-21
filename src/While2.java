@@ -1,12 +1,10 @@
-public class While2 {
-	private Cond cond;
-	private Bloc bloc;
-	
-	public While2(Cond cond, Bloc bloc){
-		this.cond = cond;
-		this.bloc = bloc;
-	}
-	
-	public void toASM(){};
+public class While2 extends Node {
 
+    private Cond c;
+    private Bloc b;
+
+    public While2(Cond c, Bloc b) {
+        this.c = c;
+        this.b = b;
+    }
 }

@@ -1,21 +1,16 @@
-public class Factor {
-	private Final2 final2;
-	private Factor factor;
-	private String operator;
+public class Factor extends Node {
 
-	public Factor(Final2 final2, Factor factor, String operator){
-		this.final2 = final2;
-		this.factor = factor;
-		this.operator = operator;
-	}
+    private Final2 final2;
+    private Factor factor;
+    private Operator operator;
 
-	public Factor(Final2 final2){
-		this.final2 = final2;
-	}
+    public Factor(Factor factor, Final2 final2, String operator){
+        this.final2 = final2;
+        this.factor = factor;
+        this.operator = new Operator(operator);
+    }
 
-
-	public void toASM(){
-
-	}
-
+    public Factor(Final2 final2){
+        this.final2 = final2;
+    }
 }

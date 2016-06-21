@@ -1,16 +1,15 @@
-public class Listvar {
-	private Var var;
-	private Listvar listvar;
-	
-	public Listvar(Var var, Listvar listvar){
-		this.var = var;
-		this.listvar = listvar;
-	}
-	
-	public Listvar(Var var){
-		this.var = var;
-	}
-	
-	public void toASM(){};
+public class ListVar extends Node{
+
+    private Var var;
+    private ListVar listVar;
+
+    public ListVar(Var var, ListVar listvar){
+        this.var = var;
+        this.listVar = listVar;
+    }
+
+    public ListVar(Var var){
+        this.var = var;
+    }
 
 }

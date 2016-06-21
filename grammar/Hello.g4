@@ -1,74 +1,103 @@
 grammar Hello;
+
 r returns [Root root]: 
-'main(' l=listvar'){'b=bloc'}' {$root = new Root($l.lv,$b.bl);};
+	p=prog
+		{$root = new Root($p.p);};
+		
+prog returns [Prog p]:
+	'main(' l=listvar'){'b=bloc'}'
+		{$p = new Prog($l.lv,$b.bc);};
 
-listvar returns[Listvar lv]:
-v=Var {$lv = new Listvar(new Var($v.getText()));}
-| v=Var','l=listvar {$lv = new Listvar(new Var($v.getText()),$l.lv);};
+listvar returns[ListVar lv]:
+	v=VAR
+		{$lv = new ListVar(new Var($v.getText()));}
+	| v=VAR','l=listvar
+		{$lv = new ListVar(new Var($v.getText()),$l.lv);};
 
-bloc returns[Bloc bl]: 
-i=inst b=bloc {$bl= new Bloc($i.in,$b.bl);};
+bloc returns[Bloc bc]:
+	i=inst b=bloc
+		{$bc = new Bloc($i.instruct,$b.bc);}
+	| i=inst
+		{$bc = new Bloc($i.instruct);};
 
-inst returns[Inst in]:  
-        a=affct';' {$in = new Inst($a.af);}
-        | d=decl';' {$in = new Inst($d.de);}
-        | d=decaf';' {$in = new Inst($d.de);}
- //     | c=comment {$in = new Inst($c.comment);}
-        | b=boucle {$in = new Inst($b.bo);};
+inst returns[Inst instruct]: 
+	a=affct';'
+		{$instruct = new Inst($a.aff);}
+	| d1=declaration';'
+		{$instruct = new Inst($d1.decl);}
+	| d2=declaffct';'
+		{$instruct = new Inst($d2.decaf);}
+//	| c=comment
+//		{$instruct = new Inst($c.com);}
+	| b=boucle
+		{$instruct = new Inst($b.b);};
 
-decl returns [Decl de]: 
-'var'l=listvar {$de = new Decl($l.lv);};
+declaration returns[Decl decl]:
+	'var 'l=listvar
+		{$decl = new Decl($l.lv);};
+		
+affct returns[Affct aff]:
+	v=VAR':='o=operation
+		{$aff = new Affct(new Var($v.getText()),$o.op);};
+		
+boucle returns[Boucle b]:
+	i=if2
+		{$b = new Boucle($i.i);}
+    | w=while2
+		{$b = new Boucle($w.w);};
+//    | f=for2
+//		{$b = new Boucle($f.for);};
 
-affct returns [Affct af] :
-    v=Var':='o1=op {$af=new Affct(new Var($v.getText()),,$o1.o);};
+//comment returns[Comment com]:
+//	'/*'(numb|','|';'|'!'|'.'|'?'|'*'|'/')*'*/'
+		
+declaffct returns[Decaf decaf]:
+	'var 'a=affct
+		{$decaf = new Decaf($a.aff);};
+		
+//if2 returns[If2 i]:
+//	'if('c=cond'){'b=bloc'}'
+//		{$i = new If2($c.c,$b.bc);};
+
+if2 returns[If2 i]: 
+    'if('c=cond'){'b=bloc'}else{'b2=bloc'}' {$i = new If2($c.c,$b.bc,$b2.bc);}
+    | 'if('c=cond'){'b=bloc'}'{$i = new If2($c.c,$b.bc);};
+
     
-boucle returns [Boucle bo]:
-    i=if2 {$bo = new Boucle($i.if);}
-    | w=while2 {$bo = new Boucle($w.wh);};
+//else2 returns [Else2 e]:
+//    'else{'b=bloc'}' {$e = new Else2($b.bc);};
 
 
-comment: '/*'(nb|','|';'|'!'|'.'|'?'|'*'|'/')*'*/';
+while2 returns[While2 w]:
+	'while('c=cond'){'b=bloc'}'
+		{$w = new While2($c.c,$b.bc);};
 
-decaf returns [Decaf de] :
-'var'a=affct {$de = new Decaf($a.af);};
+cond returns[Cond c]:
+	(op1=operation'='op2=operation {$c = new Cond($op1.op,$op2.op,"=");}
+	| op1=operation'>'op2=operation {$c = new Cond($op1.op,$op2.op,">");}
+	| op1=operation'<'op2=operation {$c = new Cond($op1.op,$op2.op,"<");}
+	| op1=operation'<='op2=operation {$c = new Cond($op1.op,$op2.op,"<=");}
+	| op1=operation'>='op2=operation) {$c = new Cond($op1.op,$op2.op,">=");};
 
-if2 returns[If2 if]: 
-    'if('c=cond'){'b=bloc'}'e=else2 {$if = new If2($c.co,$b.bl,$e.el);}
-    | 'if('c=cond'){'b=bloc'}' {$if = new If2($c.co,$b.bl);};
-
-else2 returns [Else2 el]:
-    'else{'b=bloc'}' {$el = new Else2($b.bl);};
-
-while2 returns [While2 wh]: 
-    'while('c=cond'){'b=bloc'}' {$wh = new While2($c.co,$b.bl);};
-
-cond returns [Cond co]:
-    o1=op'='o2=op {$co = new Cond($o1.o,$o2.o,"=");}
-    | o1=op'>'o2=op {$co = new Cond($o1.o,$o2.o,">");}
-    | o1=op'<'o2=op {$co = new Cond($o1.o,$o2.o,"<");}
-    | o1=op'<='o2=op {$co = new Cond($o1.o,$o2.o,"<=");}
-    | o1=op'>='o2=op {$co = new Cond($o1.o,$o2.o,">=");};
-
-op returns [Op o] :
-    f=factor'+'o1=op {$o=new Op($f.fac,$o1.o,"+");}
-    | f=factor'-'o1=op {$o=new Op($f.fac,$o1.o,"-");}
-    | f=factor {$o=new Op($f.fac);};
+operation returns [Op op] :
+    f1=factor'+'op2=operation {$op=new Op($f1.f,$op2.op,"+");}
+    | f1=factor'-'op2=operation {$op=new Op($f1.f,$op2.op,"-");}
+    | f1=factor {$op=new Op($f1.f);};
     
-factor returns [Factor fac] :
-    fa=factor'*'fi=final2 {$fac=new Factor($fa.fac,$fi.fi,"*");}
-    | fa=factor'/'fi=final2 {$fac=new Factor($fa.fac,$fi.fi,"/");}
-    | f=final2 {$fac=new Factor($f.fi);};
+factor returns [Factor f] :
+    f1=factor'*'f2=final2 {$f=new Factor($f1.f,$f2.f,"*");}
+    | f1=factor'/'f2=final2 {$f=new Factor($f1.f,$f2.f,"/");}
+    | f3=final2 {$f=new Factor($f3.f);};
+	
+final2 returns [Final2 f] :
+    '('op1=operation')' {$f=new Final2($op1.op);}
+    | nb1=numb {$f=new Final2($nb1.nb);};
+	
+numb returns [Number nb] :
+    c=CONST  {$nb=new Number(new Const2($c.getText()));}
+    | v=VAR {$nb=new Number(new Var($v.getText()));};
 
-final2 returns [Final2 fi] :
-    '('o1=op')' {$fi=new Final2($o1.o);}
-    | n1=nb {$fi=new Final2($n1.n);};
-
-nb returns [Nb n] :
-    c=Const2  {$n=new Nb(new Const2($c.getText()));}
-    | v=Var {$n=new Nb(new Var($v.getText()));};
-
-Const2: [0-9]+ ;
-
-Var: [a-zA-Z]+;
+CONST: [0-9]+ ;
+VAR : [a-zA-Z]+ ;
 
 WS : [ \t\r\n]+ -> skip ;
