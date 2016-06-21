@@ -1,4 +1,3 @@
-
 public class Affct {
 
 	private Var var;

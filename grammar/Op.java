@@ -1,4 +1,4 @@
-class Op {
+public class Op {
 	
 	private Factor factor;
 	private Op op;
