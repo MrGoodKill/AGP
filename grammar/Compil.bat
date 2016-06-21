@@ -8,7 +8,15 @@ ping 192.0.2.2 -n 1 -w 1500 > nul
 javac Hello*.java
 echo.
 echo.
-echo Termine !
+echo Deplacement des fichiers .java
+echo.
+copy "HelloLexer.java" "../src/HelloLexer.java"
+copy "HelloParser.java" "../src/HelloParser.java"
+copy "HelloBaseListener.java" "../src/HelloBaseListener.java"
+copy "HelloListener.java" "../src/HelloListener.java"
+echo.
+echo.
+echo Fini !
 echo.
 echo.
 grun Hello r -gui test.txt

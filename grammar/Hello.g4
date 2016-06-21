@@ -19,7 +19,6 @@ bloc returns[Bloc bc]:
 		{$bc = new Bloc($i.instruct,$b.bc);}
 	| i=inst
 		{$bc = new Bloc($i.instruct);};
-		
 
 inst returns[Inst instruct]: 
 	a=affct';'
