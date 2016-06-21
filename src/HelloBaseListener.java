@@ -27,6 +27,18 @@ public class HelloBaseListener implements HelloListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterProg(HelloParser.ProgContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitProg(HelloParser.ProgContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterListvar(HelloParser.ListvarContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -63,13 +75,13 @@ public class HelloBaseListener implements HelloListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDecl(HelloParser.DeclContext ctx) { }
+	@Override public void enterDeclaration(HelloParser.DeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDecl(HelloParser.DeclContext ctx) { }
+	@Override public void exitDeclaration(HelloParser.DeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -99,13 +111,13 @@ public class HelloBaseListener implements HelloListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDecaf(HelloParser.DecafContext ctx) { }
+	@Override public void enterDeclaffct(HelloParser.DeclaffctContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDecaf(HelloParser.DecafContext ctx) { }
+	@Override public void exitDeclaffct(HelloParser.DeclaffctContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -135,18 +147,6 @@ public class HelloBaseListener implements HelloListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFor2(HelloParser.For2Context ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFor2(HelloParser.For2Context ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterCond(HelloParser.CondContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -159,25 +159,13 @@ public class HelloBaseListener implements HelloListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp(HelloParser.OpContext ctx) { }
+	@Override public void enterOperation(HelloParser.OperationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp(HelloParser.OpContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterTerme(HelloParser.TermeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTerme(HelloParser.TermeContext ctx) { }
+	@Override public void exitOperation(HelloParser.OperationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -195,13 +183,25 @@ public class HelloBaseListener implements HelloListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNb(HelloParser.NbContext ctx) { }
+	@Override public void enterFinal2(HelloParser.Final2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNb(HelloParser.NbContext ctx) { }
+	@Override public void exitFinal2(HelloParser.Final2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNumb(HelloParser.NumbContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNumb(HelloParser.NumbContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
