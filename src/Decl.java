@@ -1,5 +1,3 @@
-package nodes;
-
 public class Decl extends Node {
 
     private ListVar listvar;

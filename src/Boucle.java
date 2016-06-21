@@ -1,5 +1,3 @@
-package nodes;
-
 public class Boucle extends Node {
 
     private If2 if2;

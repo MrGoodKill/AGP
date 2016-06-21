@@ -1,5 +1,3 @@
-package nodes;
-
 public class Cond extends Node {
 
     private Op op1;

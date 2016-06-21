@@ -1,5 +1,3 @@
-package nodes;
-
 public class Decaf extends Node {
 
     private Affct affct;

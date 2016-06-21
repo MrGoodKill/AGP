@@ -1,5 +1,3 @@
-package nodes;
-
 public class Prog extends Node {
 
     private ListVar lv;

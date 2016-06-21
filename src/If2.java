@@ -1,5 +1,3 @@
-package nodes;
-
 public class If2 extends Node {
 
     private Cond cond;

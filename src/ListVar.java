@@ -1,5 +1,3 @@
-package nodes;
-
 public class ListVar extends Node{
 
     private Var var;

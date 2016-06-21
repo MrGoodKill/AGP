@@ -1,5 +1,3 @@
-package nodes;
-
 public class Affct extends Node {
 
     private Var var;

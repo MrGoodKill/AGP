@@ -1,5 +1,3 @@
-package nodes;
-
 public class Final2 extends Node {
 
     private Op op;

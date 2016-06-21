@@ -1,5 +1,3 @@
-package nodes;
-
 public class Bloc extends Node {
 
     private Inst inst;
@@ -8,6 +6,10 @@ public class Bloc extends Node {
     public Bloc(Inst inst, Bloc bloc){
         this.inst = inst;
         this.bloc = bloc;
+    }
+
+    public Bloc(Inst inst){
+        this.inst = inst;
     }
 
     public Bloc(){}

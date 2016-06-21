@@ -1,5 +1,3 @@
-package nodes;
-
 public class Inst extends Node {
 
     private Affct affct;

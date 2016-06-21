@@ -1,5 +1,3 @@
-package nodes;
-
 public class Factor extends Node {
 
     private Final2 final2;

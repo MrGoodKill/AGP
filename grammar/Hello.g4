@@ -1,9 +1,5 @@
 grammar Hello;
 
-@header {
-    package nodes;
-}
-
 r returns [Root root]: 
 	p=prog
 		{$root = new Root($p.p);};
@@ -20,7 +16,9 @@ listvar returns[ListVar lv]:
 
 bloc returns[Bloc bc]:
 	i=inst b=bloc
-		{$bc = new Bloc($i.instruct,$b.bc);};
+		{$bc = new Bloc($i.instruct,$b.bc);}
+	| i=inst
+		{$bc = new Bloc($i.instruct);};
 		
 
 inst returns[Inst instruct]: 

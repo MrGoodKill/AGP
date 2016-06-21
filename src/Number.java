@@ -1,5 +1,3 @@
-package nodes;
-
 public class Number extends Node {
 
     private Const2 c;

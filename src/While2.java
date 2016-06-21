@@ -1,5 +1,3 @@
-package nodes;
-
 public class While2 extends Node {
 
     private Cond c;

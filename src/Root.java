@@ -1,5 +1,3 @@
-package nodes;
-
 public class Root extends Node{
 
     private Prog p;

@@ -1,7 +1,8 @@
-package nodes;
+public class Root extends Node{
 
-/**
- * Created by Pierre-Marie on 21/06/2016.
- */
-public class Root {
+    private Prog p;
+
+    public Root(Prog p) {
+        this.p = p;
+    }
 }
