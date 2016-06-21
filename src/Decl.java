@@ -5,4 +5,5 @@ public class Decl extends Node {
     public Decl(ListVar listar){
         this.listvar = listvar;
     }
+
 }

@@ -12,4 +12,15 @@ public class ListVar extends Node{
         this.var = var;
     }
 
+    private boolean isSingle(){
+        return (listVar==null);
+    }
+
+    @Override
+    public String toASMData() {
+        String output;
+        output = var.name()+ ":\tdd\t0";
+        if(!isSingle())output= output+"\n"+listVar.toASMData();
+        return output;
+    }
 }
