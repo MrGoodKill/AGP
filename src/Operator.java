@@ -50,9 +50,9 @@ public class Operator {
             case SUB:
                 return "sub eax ebx";
             case MULT:
-                return "imul eax ebx";
+                return "imul ebx";
             case DIV:
-                return "idiv eax ebx";
+                return "idiv ebx";
         }
         return "";
     }

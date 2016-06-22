@@ -22,9 +22,9 @@ public class Op extends Node {
     public String toASM() {
         String output;
         if(isOperation()) {
-            output = f1.toASM() +
+            output =
                     op1.toASM() +
-                    "\npop eax" +
+                    f1.toASMInEAX() +
                     "\npop ebx" +
                     "\n"+operator.toASM() +
                     "\npush eax";
@@ -37,9 +37,8 @@ public class Op extends Node {
     public String toASMInEAX() {
         String output;
         if(isOperation()) {
-            output = f1.toASM() +
-                    op1.toASM() +
-                    "\npop eax" +
+            output = op1.toASM() +
+                    f1.toASMInEAX() +
                     "\npop ebx" +
                     "\n"+operator.toASM();
         } else {
