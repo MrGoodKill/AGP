@@ -8,4 +8,6 @@ public class Node {
         return "";
     }
     
+    protected static int condCpt;
+    
 }

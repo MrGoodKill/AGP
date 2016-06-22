@@ -46,9 +46,9 @@ public class Operator {
     public String toASM(){
         switch(op) {
             case ADD:
-                return "add eax ebx";
+                return "add eax,ebx";
             case SUB:
-                return "sub eax ebx";
+                return "sub eax,ebx";
             case MULT:
                 return "imul ebx";
             case DIV:

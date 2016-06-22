@@ -19,11 +19,12 @@ public class If2 extends Node {
 
     @Override
     public String toASM() {
-        String output=cond.toASM();
-        output=output+"\njne endif"+compt;
+        String output= cond.toASM();
+        output+=("\njmp endif"+condCpt);
+        output+=("\ncond"+condCpt+":");
         output=output+bloc.toASM();
-        output=output+"\nendif"+compt+":";
-        compt++;
+        output=output+"\nendif"+condCpt+":";
+        condCpt++;
         return output;
     }
 
