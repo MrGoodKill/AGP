@@ -16,14 +16,24 @@ public class If2 extends Node {
         this.bloc = bloc;
         this.bloc2 = bloc2;
     }
+    
+    public String toASM() {
+        String output= cond.toASM();
+        output=output+bloc.toASM();
+        if (bloc2!=null){
+        	output+= newLine("jmp endelse"+condCpt);
+        }
+        output+=newLabel("cond"+condCpt+":");
+        if (bloc2!=null){
+        	output+=bloc2.toASM();
+        	output+=newLabel("endelse"+condCpt+":");
+        }
+        condCpt++;
+        return output;
+    }
 
     @Override
-    public String toASM() {
-        String output=cond.toASM();
-        output=output+"\njne endif"+compt;
-        output=output+bloc.toASM();
-        output=output+"\nendif"+compt+":";
-        compt++;
-        return output;
+    public String toASMData() {
+        return cond.toASMData()+bloc.toASMData();
     }
 }

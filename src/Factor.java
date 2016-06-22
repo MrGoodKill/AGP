@@ -21,11 +21,10 @@ public class Factor extends Node {
     public String toASM() {
         String output;
         if(isOperation()) {
-            output = final2.toASM() +
-                    factor.toASM() +
-                    newLine("pop eax") +
+            output = factor.toASMInEAX() +
+                    final2.toASM() +
                     newLine("pop ebx") +
-                    newLine("")+operator.toASM() +
+                    operator.toASM() +
                     newLine("push eax");
         } else {
             output = final2.toASM();
@@ -36,11 +35,10 @@ public class Factor extends Node {
     public String toASMInEAX() {
         String output;
         if(isOperation()) {
-            output = final2.toASM() +
-                    factor.toASM() +
-                    newLine("pop eax") +
+            output = factor.toASM() +
+                    final2.toASMInEAX() +
                     newLine("pop ebx") +
-                    newLine("")+operator.toASM();
+                    operator.toASM();
         } else {
             output = final2.toASMInEAX();
         }

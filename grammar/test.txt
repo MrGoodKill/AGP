@@ -1,7 +1,7 @@
 
 
-main(a,b){
-	var x,c;
+main(a,b,c){
+	var x;
 	x:=3;
 	while(x<3){
 		x:= x + 1;
@@ -13,4 +13,8 @@ main(a,b){
 	if(a=3){
 		c:=4;
 	}
+	else{
+		b:=4;
+	}
+
 }

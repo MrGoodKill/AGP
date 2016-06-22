@@ -10,4 +10,24 @@ public class Final2 extends Node {
     public Final2(Number nb){
         this.nb = nb;
     }
+
+    public String toASM() {
+        if(op!=null){
+            return op.toASM();
+        }
+        if(nb!=null){
+            return newLine("")+nb.placeInStack();
+        }
+        return "";
+    }
+
+    public String toASMInEAX() {
+        if(op!=null){
+            return op.toASM();
+        }
+        if(nb!=null){
+            return newLine("")+nb.placeInEax();
+        }
+        return "";
+    }
 }

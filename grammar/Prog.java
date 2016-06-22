@@ -10,10 +10,10 @@ public class Prog extends Node {
 
     @Override
     public String toASM() {
-        return "global main\n" +
-                "\n" +
-                "main:\n" +
-                b.toASM();
+        return newLabel("global main") +
+               newLabel("") +
+               newLabel("main:") +
+               b.toASM();
     }
 
     @Override

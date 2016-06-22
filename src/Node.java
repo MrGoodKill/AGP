@@ -1,4 +1,6 @@
 public class Node {
+	
+    protected static int condCpt;
 
     public String toASM(){
         return "\n[Node sans ASM : "+getClass().getName()+"]";

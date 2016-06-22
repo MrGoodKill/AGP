@@ -7,4 +7,15 @@ public class While2 extends Node {
         this.c = c;
         this.b = b;
     }
+    
+   public String toASM(){
+    	String output =	newLabel("while"+condCpt+":") +
+    					c.toASM() +
+    					b.toASM() +  					
+    					newLine("jmp while"+condCpt) +
+    					newLabel("cond"+condCpt+":");    	
+    	condCpt++;
+		return output;
+    }
+    
 }
