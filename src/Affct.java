@@ -16,7 +16,7 @@ public class Affct extends Node {
     public String toASM() {
         String output;
         output=op.toASMInEAX();
-        output=output+"\nmov ["+var.name()+"] eax";
+        output=output+newLine("mov ["+var.name()+"] eax");
         return output;
     }
 }

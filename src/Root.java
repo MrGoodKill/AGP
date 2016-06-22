@@ -9,12 +9,12 @@ public class Root extends Node{
     @Override
     public String toASM() {
         String output =
-                "extern printf,exit\n" +
-                "section .data\n" +
-                 p.toASMData() +
-                 "\n\n" +
-                 "section .text\n" +
-                 p.toASM();
+                newLabel("extern printf,exit") +
+                newLabel("section .data") +
+                p.toASMData() +
+                newLabel("") + newLabel("") +
+                newLabel("section .text") +
+                p.toASM();
         return output;
 
     }
