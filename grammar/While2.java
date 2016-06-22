@@ -17,5 +17,11 @@ public class While2 extends Node {
     	condCpt++;
 		return output;
     }
+   
+   @Override
+   public String toASMData() {
+       String asmData = c.toASMData()+b.toASMData();
+       return asmData;
+   }
     
 }

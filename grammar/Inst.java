@@ -5,6 +5,7 @@ public class Inst extends Node {
     private Decaf decaf;
     private If2 if2;
     private While2 while2;
+    private Print print;
     private InstructionType type;
 
     public Inst(Affct affct){
@@ -31,6 +32,11 @@ public class Inst extends Node {
         this.while2 = while2;
         type = InstructionType.While2;
     }
+    
+    public Inst(Print print){
+        this.print = print;
+        type = InstructionType.Print;
+    }
 
 
     @Override
@@ -47,6 +53,8 @@ public class Inst extends Node {
                 break;
             case While2: output= while2.toASM();
                 break;
+            case Print: output= print.toASM();
+            break;
         }
         return output;
     }
@@ -65,6 +73,8 @@ public class Inst extends Node {
                 break;
             case While2: output= while2.toASMData();
                 break;
+            case Print: output= print.toASMData();
+            	break;
         }
         return output;
     }

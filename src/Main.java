@@ -25,7 +25,7 @@ public class Main {
         
         System.out.println(tree.toASM());
         
-        PrintWriter writer = new PrintWriter("../hello.asm", "UTF-8");
+        PrintWriter writer = new PrintWriter("../../Shared/hello.asm", "UTF-8");
         writer.println(tree.toASM());
         writer.close();
     }

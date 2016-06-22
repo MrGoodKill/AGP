@@ -3,7 +3,8 @@ public enum InstructionType {
     Decl,
     Decaf,
     If2,
-    While2;
+    While2,
+	Print;
 
     public boolean isAffct(){
         return this.equals(Affct);
@@ -19,5 +20,8 @@ public enum InstructionType {
     }
     public boolean isWhile2(){
         return this.equals(While2);
+    }
+    public boolean isPrint(){
+        return this.equals(Print);
     }
 }

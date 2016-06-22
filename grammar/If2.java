@@ -34,6 +34,10 @@ public class If2 extends Node {
 
     @Override
     public String toASMData() {
-        return cond.toASMData()+bloc.toASMData();
+        String asmData = cond.toASMData()+bloc.toASMData();
+        if (bloc2!=null){
+        	asmData+= cond.toASMData()+bloc2.toASMData();
+        }
+        return asmData;
     }
 }
