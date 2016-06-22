@@ -8,4 +8,18 @@ public class Node {
         return "";
     }
     
+    public String newLine(String line){
+    	
+    	String output;
+    	output = "\n\t"+line;
+    	return output;
+    }
+    
+    public String newLabel(String label){
+    	
+    	String output;
+    	output = "\n"+label;
+    	return output;
+    }
+    
 }

@@ -24,10 +24,11 @@ public class Op extends Node {
         if(isOperation()) {
             output = f1.toASM() +
                     op1.toASM() +
-                    "\npop eax" +
-                    "\npop ebx" +
-                    "\n"+operator.toASM() +
-                    "\npush eax";
+                    newLine("pop eax") +
+                    newLine("pop ebx") +
+                    newLine("")+
+                    operator.toASM() +
+                    newLine("push eax");
         } else {
             output = f1.toASM();
         }
@@ -39,9 +40,10 @@ public class Op extends Node {
         if(isOperation()) {
             output = f1.toASM() +
                     op1.toASM() +
-                    "\npop eax" +
-                    "\npop ebx" +
-                    "\n"+operator.toASM();
+                    newLine("pop eax") +
+                    newLine("pop ebx") +
+                    newLine("")+
+                    operator.toASM();
         } else {
             output = f1.toASMInEAX();
         }

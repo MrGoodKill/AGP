@@ -23,10 +23,10 @@ public class Factor extends Node {
         if(isOperation()) {
             output = final2.toASM() +
                     factor.toASM() +
-                    "\npop eax" +
-                    "\npop ebx" +
-                    "\n"+operator.toASM() +
-                    "\npush eax";
+                    newLine("pop eax") +
+                    newLine("pop ebx") +
+                    newLine("")+operator.toASM() +
+                    newLine("push eax");
         } else {
             output = final2.toASM();
         }
@@ -38,9 +38,9 @@ public class Factor extends Node {
         if(isOperation()) {
             output = final2.toASM() +
                     factor.toASM() +
-                    "\npop eax" +
-                    "\npop ebx" +
-                    "\n"+operator.toASM();
+                    newLine("pop eax") +
+                    newLine("pop ebx") +
+                    newLine("")+operator.toASM();
         } else {
             output = final2.toASMInEAX();
         }

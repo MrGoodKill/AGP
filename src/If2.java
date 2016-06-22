@@ -20,9 +20,9 @@ public class If2 extends Node {
     @Override
     public String toASM() {
         String output=cond.toASM();
-        output=output+"\njne endif"+compt;
+        output=output+newLine("jne endif")+compt;
         output=output+bloc.toASM();
-        output=output+"\nendif"+compt+":";
+        output=output+newLabel("endif")+compt+":";
         compt++;
         return output;
     }
