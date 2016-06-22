@@ -12,12 +12,12 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("FICHIER DE BASE :\n\n");
 
-        String content = new Scanner(new File("grammar/test.txt")).useDelimiter("\\Z").next();
+        String content = new Scanner(new File("../grammar/test.txt")).useDelimiter("\\Z").next();
 
         System.out.println(content+"\n\n");
         System.out.println("TRADUCTION :\n");
 
-        HelloLexer lexer = new HelloLexer( new ANTLRFileStream("grammar/test.txt"));
+        HelloLexer lexer = new HelloLexer( new ANTLRFileStream("../grammar/test.txt"));
         CommonTokenStream tokens = new CommonTokenStream( lexer );
         HelloParser parser = new HelloParser( tokens );
         Root tree = parser.r().root;

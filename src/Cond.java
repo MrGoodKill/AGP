@@ -17,27 +17,29 @@ public class Cond extends Node {
     	output =
                 op1.toASMInEAX() +
                 op2.toASM() +
-                "\npop ebx" +
-                "\ncmp eax,ebx";
+                newLine("pop ebx") +
+        		newLine("cmp eax,ebx");
+    	
+    	// We jump when the conditions aren't true
     	
     	switch(operator.getOp()){
 		case EQU:
-			output += "\nje cond"+condCpt;
+			output += newLine("jne cond"+condCpt);
 			break;
 		case INF:
-			output += "\njl cond"+condCpt;
+			output += newLine("jge cond"+condCpt);
 			break;
 		case IOE:
-			output += "\njle cond"+condCpt;
+			output += newLine("jg cond"+condCpt);
 			break;
 		case SOE:
-			output += "\njge cond"+condCpt;
+			output += newLine("jl cond"+condCpt);
 			break;
 		case SUP:
-			output += "\njg cond"+condCpt;
+			output += newLine("jle cond"+condCpt);
 			break;
 		default:
-			output += "\ncond failed, was not <,>,=,<=,>= :'(";
+			output += newLine("cond failed, was not <,>,=,<=,>= :'(");
 			break;
     	}
 		return output;

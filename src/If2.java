@@ -16,14 +16,11 @@ public class If2 extends Node {
         this.bloc = bloc;
         this.bloc2 = bloc2;
     }
-
-    @Override
+    
     public String toASM() {
         String output= cond.toASM();
-        output+=("\njmp endif"+condCpt);
-        output+=("\ncond"+condCpt+":");
         output=output+bloc.toASM();
-        output=output+"\nendif"+condCpt+":";
+        output+=newLabel("cond"+condCpt+":");;
         condCpt++;
         return output;
     }

@@ -54,7 +54,7 @@ declaffct returns[Decaf decaf]:
 //		{$i = new If2($c.c,$b.bc);};
 
 if2 returns[If2 i]: 
-    'if('c=cond'){'b=bloc'}else{'b2=bloc'}' {$i = new If2($c.c,$b.bc,$b2.bc);}
+    'if('c=cond'){'b=bloc'}''else{'b2=bloc'}' {$i = new If2($c.c,$b.bc,$b2.bc);}
     | 'if('c=cond'){'b=bloc'}'{$i = new If2($c.c,$b.bc);};
 
     
