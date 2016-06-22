@@ -23,10 +23,10 @@ public class Number extends Node {
 
     public String placeInEax() {
         if(c!=null){
-            return "mov eax "+c.getValeur();
+            return "mov eax,"+c.getValeur();
         }
         if(v!=null){
-            return "mov eax ["+v.name()+"]";
+            return "mov eax,["+v.name()+"]";
         }
         return "";
     }

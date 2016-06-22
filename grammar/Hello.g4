@@ -32,7 +32,12 @@ inst returns[Inst instruct]:
 	| i=if2
 		{$instruct = new Inst($i.i);}
     | w=while2
-		{$instruct = new Inst($w.w);};
+		{$instruct = new Inst($w.w);}
+	| p=print';'
+		{$instruct = new Inst($p.p);};
+
+print returns[Print p]:
+	'print('v=VAR')' {$p = new Print(new Var($v.getText()));};
 
 declaration returns[Decl decl]:
 	'var 'l=listvar
