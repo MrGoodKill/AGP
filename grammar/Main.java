@@ -5,6 +5,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Main {
@@ -21,6 +22,11 @@ public class Main {
         CommonTokenStream tokens = new CommonTokenStream( lexer );
         HelloParser parser = new HelloParser( tokens );
         Root tree = parser.r().root;
+        
         System.out.println(tree.toASM());
+        
+        PrintWriter writer = new PrintWriter("../hello.asm", "UTF-8");
+        writer.println(tree.toASM());
+        writer.close();
     }
 }
