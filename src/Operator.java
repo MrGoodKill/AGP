@@ -44,6 +44,10 @@ public class Operator extends Node{
 	}
 
     public String toASM(){
+        return toASM(-1);
+    }
+
+    public String toASM(int compt){
         switch(op) {
             case ADD:
                 return newLine("add eax,ebx");
@@ -52,9 +56,20 @@ public class Operator extends Node{
             case MULT:
                 return newLine("imul ebx");
             case DIV:
-                return newLine("div ebx");
+                return newLine("idiv ebx");
+            case EQU:
+                return newLine("jne cond"+compt);
+            case INF:
+                return newLine("jge cond"+compt);
+            case IOE:
+                return newLine("jg cond"+compt);
+            case SOE:
+                return newLine("jl cond"+compt);
+            case SUP:
+                return newLine("jle cond"+compt);
+            default:
+                return newLine("asm failed for operator");
         }
-        return "";
     }
 
 }
