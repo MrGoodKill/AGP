@@ -15,7 +15,8 @@ public class Root extends Node{
                 p.toASMData() +
                 newLabel("") + newLabel("") +
                 newLabel("section .text") +
-                p.toASM();
+                p.toASM() +
+                newLine("call exit");
         return output;
 
     }

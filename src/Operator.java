@@ -52,7 +52,7 @@ public class Operator extends Node{
             case MULT:
                 return newLine("imul ebx");
             case DIV:
-                return newLine("idiv ebx");
+                return newLine("div ebx");
         }
         return "";
     }

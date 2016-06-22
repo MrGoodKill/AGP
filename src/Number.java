@@ -36,7 +36,7 @@ public class Number extends Node {
             return "push "+c.getValeur();
         }
         if(v!=null){
-            return "push ["+v.name()+"]";
+            return "push dword["+v.name()+"]";
         }
         return "";
     }
