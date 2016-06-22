@@ -3,7 +3,6 @@ public class Cond extends Node {
     private Op op1;
     private Op op2;
     private Operator operator;
-    private static int compt = 0;
 
     public Cond(Op op1, Op op2, String operator){
         this.op1 = op1;
