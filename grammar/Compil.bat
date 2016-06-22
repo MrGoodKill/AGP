@@ -2,10 +2,12 @@
 SET CLASSPATH=.;.\antlr-4.5.3-complete.jar;%CLASSPATH%
 doskey antlr4=java org.antlr.v4.Tool $*
 doskey grun =java org.antlr.v4.gui.TestRig $*
+del *.java
+del *.class
+for %%I in (..\src\*.java) do copy ..\src\%%I
 start antlr4 Hello.g4
 echo Wait for it...
-del "./*.class"
-ping 192.0.2.2 -n 1 -w 1500 > nul
+ping 192.0.2.2 -n 1 -w 2000 > nul
 javac Hello*.java
 echo.
 echo.
