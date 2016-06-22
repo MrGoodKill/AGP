@@ -1,5 +1,5 @@
 
-public class Operator {
+public class Operator extends Node{
 	
 	public enum Op{
 		ADD,SUB,MULT,DIV,EQU,SOE,SUP,INF,IOE;
@@ -42,5 +42,19 @@ public class Operator {
 			break;
 		}
 	}
+
+    public String toASM(){
+        switch(op) {
+            case ADD:
+                return newLine("add eax,ebx");
+            case SUB:
+                return newLine("sub eax,ebx");
+            case MULT:
+                return newLine("imul ebx");
+            case DIV:
+                return newLine("idiv ebx");
+        }
+        return "";
+    }
 
 }

@@ -1,0 +1,56 @@
+grammar Hello;
+r : 'main('listvar'){'bloc'}';
+
+listvar : VAR
+      | VAR','listvar;
+
+bloc : inst bloc|;
+
+/* Instructions possibles : affectation, declaration, declaration+affectation, commentaire et enfin les boucles */
+inst :  affct';'
+	| decl';'
+	| decaf';'
+	| comment
+	| boucle;
+
+decl : 'var'listvar;
+
+affct : VAR':='op;
+
+/* Boucles possibles : if, while et for (les '2' sont la pour assurer qu'a la compilation, il n'y ait pas d'ambiguite avec les fonctions if, while et for deja existantes */
+boucle : if2
+     | while2
+     | for2;
+
+comment: '/*'(nb|','|';'|'!'|'.'|'?'|'*'|'/')*'*/';
+
+decaf: 'var'affct;
+
+/* Boucle if avec elif et else (meme remarque pour le '2' de else que precedemment */
+if2: 'if('cond'){'bloc'}'elif*(else2|);
+elif: 'elif('cond'){'bloc'}';
+else2: 'else{'bloc'}';
+
+while2: 'while('cond'){'bloc'}';
+
+for2:'for('decaf';'cond';'affct'){'bloc'}';
+
+/* Liste des conditions possibles entre 2 operandes */
+cond:
+	(op'='op
+	| op'>'op
+	| op'<'op
+	| op'<='op
+	| op'>='op);
+
+/* implementation d'une operande afin de respecter les ordres de priorite sur les multiplications et divisions */
+op : terme('+'terme | '-'terme)*;
+terme : factor('*'factor | '/'factor)*;
+factor : '-'factor | nb | '('op')';
+nb: CONST | VAR ;
+
+CONST: [0-9]+ ;
+VAR : [a-zA-Z]+ ;
+
+/* Enfin, on indique qu'a la compilation, on skip les espaces, tabulations et sauts de ligne */
+WS : [ \t\r\n]+ -> skip ;
