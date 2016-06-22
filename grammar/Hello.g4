@@ -17,8 +17,8 @@ listvar returns[ListVar lv]:
 bloc returns[Bloc bc]:
 	i=inst b=bloc
 		{$bc = new Bloc($i.instruct,$b.bc);}
-	| i=inst
-		{$bc = new Bloc($i.instruct);};
+	| 
+		{$bc = new Bloc();};
 
 inst returns[Inst instruct]: 
 	a=affct';'

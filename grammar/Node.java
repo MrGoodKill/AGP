@@ -1,6 +1,6 @@
 public class Node {
 	
-    protected static int condCpt;
+    protected static int condCpt=1;
 
     public String toASM(){
         return "\n[Node sans ASM : "+getClass().getName()+"]";
@@ -13,7 +13,11 @@ public class Node {
     public String newLine(String line){
     	
     	String output;
-    	output = "\n\t"+line;
+    	if(Main.DEBUG){
+            output = "\n\t"+line+"\t\t\t["+getClass().getName()+"]";
+        } else {
+            output = "\n\t"+line;
+        }
     	return output;
     }
     

@@ -8,10 +8,6 @@ public class Bloc extends Node {
         this.bloc = bloc;
     }
 
-    public Bloc(Inst inst){
-        this.inst = inst;
-    }
-
     public Bloc(){}
 
     @Override
