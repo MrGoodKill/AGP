@@ -8,7 +8,6 @@ public class Cond extends Node {
         this.op1 = op1;
         this.op2 = op2;
         this.operator = new Operator(operator);
-        System.out.println("Opérateur:"+operator);
     }
     
     public String toASM(){
