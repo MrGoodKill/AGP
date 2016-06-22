@@ -10,7 +10,7 @@ public class Cond extends Node {
         this.operator = new Operator(operator);
     }
     
-    public String toASM(){
+    public String toASM(int compt){
     	String output;
     	
     	output =
@@ -20,28 +20,13 @@ public class Cond extends Node {
         		newLine("cmp eax,ebx");
     	
     	// We jump when the conditions aren't true
-    	
-    	switch(operator.getOp()){
-		case EQU:
-			output += newLine("jne cond"+condCpt);
-			break;
-		case INF:
-			output += newLine("jge cond"+condCpt);
-			break;
-		case IOE:
-			output += newLine("jg cond"+condCpt);
-			break;
-		case SOE:
-			output += newLine("jl cond"+condCpt);
-			break;
-		case SUP:
-			output += newLine("jle cond"+condCpt);
-			break;
-		default:
-			output += newLine("cond failed, was not <,>,=,<=,>= :'(");
-			break;
-    	}
+        output += operator.toASM(compt);
+
 		return output;
+    }
+
+    public String toASM(){
+        return toASM(-1);
     }
     
     
