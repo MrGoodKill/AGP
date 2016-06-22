@@ -1,12 +1,12 @@
-public class Cond {
-	private Op op1;
-	private Op op2;
-	
-	public Cond(Op op1, Op op2){
-		this.op1 = op1;
-		this.op2 = op2;
-	}
-	
-	public void toASM(){};
+public class Cond extends Node {
 
+    private Op op1;
+    private Op op2;
+    private Operator operator;
+
+    public Cond(Op op1, Op op2, String operator){
+        this.op1 = op1;
+        this.op2 = op2;
+        this.operator = new Operator(operator);
+    }
 }

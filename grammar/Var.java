@@ -1,14 +1,12 @@
-public class Var {
-	
-	private String texte;
-	
-	public Var(String text){
-		this.texte = texte;
-	}
-	
-	public void toASM(){
-		
-	}
-	
+public class Var extends Node {
 
+    private String texte;
+
+    public Var(String text){
+        this.texte = text;
+    }
+
+    public String name(){
+        return texte;
+    }
 }

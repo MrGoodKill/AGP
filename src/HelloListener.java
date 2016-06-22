@@ -17,6 +17,16 @@ public interface HelloListener extends ParseTreeListener {
 	 */
 	void exitR(HelloParser.RContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link HelloParser#prog}.
+	 * @param ctx the parse tree
+	 */
+	void enterProg(HelloParser.ProgContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HelloParser#prog}.
+	 * @param ctx the parse tree
+	 */
+	void exitProg(HelloParser.ProgContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link HelloParser#listvar}.
 	 * @param ctx the parse tree
 	 */
@@ -47,15 +57,15 @@ public interface HelloListener extends ParseTreeListener {
 	 */
 	void exitInst(HelloParser.InstContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link HelloParser#decl}.
+	 * Enter a parse tree produced by {@link HelloParser#declaration}.
 	 * @param ctx the parse tree
 	 */
-	void enterDecl(HelloParser.DeclContext ctx);
+	void enterDeclaration(HelloParser.DeclarationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link HelloParser#decl}.
+	 * Exit a parse tree produced by {@link HelloParser#declaration}.
 	 * @param ctx the parse tree
 	 */
-	void exitDecl(HelloParser.DeclContext ctx);
+	void exitDeclaration(HelloParser.DeclarationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link HelloParser#affct}.
 	 * @param ctx the parse tree
@@ -67,35 +77,15 @@ public interface HelloListener extends ParseTreeListener {
 	 */
 	void exitAffct(HelloParser.AffctContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link HelloParser#boucle}.
+	 * Enter a parse tree produced by {@link HelloParser#declaffct}.
 	 * @param ctx the parse tree
 	 */
-	void enterBoucle(HelloParser.BoucleContext ctx);
+	void enterDeclaffct(HelloParser.DeclaffctContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link HelloParser#boucle}.
+	 * Exit a parse tree produced by {@link HelloParser#declaffct}.
 	 * @param ctx the parse tree
 	 */
-	void exitBoucle(HelloParser.BoucleContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link HelloParser#comment}.
-	 * @param ctx the parse tree
-	 */
-	void enterComment(HelloParser.CommentContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HelloParser#comment}.
-	 * @param ctx the parse tree
-	 */
-	void exitComment(HelloParser.CommentContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link HelloParser#decaf}.
-	 * @param ctx the parse tree
-	 */
-	void enterDecaf(HelloParser.DecafContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HelloParser#decaf}.
-	 * @param ctx the parse tree
-	 */
-	void exitDecaf(HelloParser.DecafContext ctx);
+	void exitDeclaffct(HelloParser.DeclaffctContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link HelloParser#if2}.
 	 * @param ctx the parse tree
@@ -107,26 +97,6 @@ public interface HelloListener extends ParseTreeListener {
 	 */
 	void exitIf2(HelloParser.If2Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link HelloParser#elif}.
-	 * @param ctx the parse tree
-	 */
-	void enterElif(HelloParser.ElifContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HelloParser#elif}.
-	 * @param ctx the parse tree
-	 */
-	void exitElif(HelloParser.ElifContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link HelloParser#else2}.
-	 * @param ctx the parse tree
-	 */
-	void enterElse2(HelloParser.Else2Context ctx);
-	/**
-	 * Exit a parse tree produced by {@link HelloParser#else2}.
-	 * @param ctx the parse tree
-	 */
-	void exitElse2(HelloParser.Else2Context ctx);
-	/**
 	 * Enter a parse tree produced by {@link HelloParser#while2}.
 	 * @param ctx the parse tree
 	 */
@@ -136,16 +106,6 @@ public interface HelloListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitWhile2(HelloParser.While2Context ctx);
-	/**
-	 * Enter a parse tree produced by {@link HelloParser#for2}.
-	 * @param ctx the parse tree
-	 */
-	void enterFor2(HelloParser.For2Context ctx);
-	/**
-	 * Exit a parse tree produced by {@link HelloParser#for2}.
-	 * @param ctx the parse tree
-	 */
-	void exitFor2(HelloParser.For2Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link HelloParser#cond}.
 	 * @param ctx the parse tree
@@ -157,25 +117,15 @@ public interface HelloListener extends ParseTreeListener {
 	 */
 	void exitCond(HelloParser.CondContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link HelloParser#op}.
+	 * Enter a parse tree produced by {@link HelloParser#operation}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp(HelloParser.OpContext ctx);
+	void enterOperation(HelloParser.OperationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link HelloParser#op}.
+	 * Exit a parse tree produced by {@link HelloParser#operation}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp(HelloParser.OpContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link HelloParser#terme}.
-	 * @param ctx the parse tree
-	 */
-	void enterTerme(HelloParser.TermeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HelloParser#terme}.
-	 * @param ctx the parse tree
-	 */
-	void exitTerme(HelloParser.TermeContext ctx);
+	void exitOperation(HelloParser.OperationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link HelloParser#factor}.
 	 * @param ctx the parse tree
@@ -187,13 +137,23 @@ public interface HelloListener extends ParseTreeListener {
 	 */
 	void exitFactor(HelloParser.FactorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link HelloParser#nb}.
+	 * Enter a parse tree produced by {@link HelloParser#final2}.
 	 * @param ctx the parse tree
 	 */
-	void enterNb(HelloParser.NbContext ctx);
+	void enterFinal2(HelloParser.Final2Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link HelloParser#nb}.
+	 * Exit a parse tree produced by {@link HelloParser#final2}.
 	 * @param ctx the parse tree
 	 */
-	void exitNb(HelloParser.NbContext ctx);
+	void exitFinal2(HelloParser.Final2Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link HelloParser#numb}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumb(HelloParser.NumbContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HelloParser#numb}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumb(HelloParser.NumbContext ctx);
 }

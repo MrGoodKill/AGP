@@ -1,12 +1,22 @@
-public class Decl {
-	
-	private Listvar listvar;
-	
-	public Decl(Listvar listar){
-		this.listvar = listvar;
-	}
-	
-	public void toASM(){
-		
-	}
+public class Decl extends Node {
+
+    private ListVar listVar;
+
+    public Decl(ListVar listVar){
+        this.listVar = listVar;
+    }
+
+    @Override
+    public String toASM() {
+        return "";
+    }
+
+    @Override
+    public String toASMData() {
+        String output="";
+        for(Var v:listVar){
+            output=output+"\n"+v.name()+ ":\tdd\t0";
+        }
+        return output;
+    }
 }
