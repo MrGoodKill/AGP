@@ -5,4 +5,8 @@ public class Const2 {
     public Const2(String valeur){
         this.valeur = Integer.parseInt(valeur);
     }
+
+    public int getValeur(){
+        return valeur;
+    }
 }

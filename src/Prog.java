@@ -18,6 +18,6 @@ public class Prog extends Node {
 
     @Override
     public String toASMData() {
-        return lv.toASMData();
+        return lv.toASMData()+b.toASMData();
     }
 }

@@ -43,4 +43,18 @@ public class Operator {
 		}
 	}
 
+    public String toASM(){
+        switch(op) {
+            case ADD:
+                return "add eax ebx";
+            case SUB:
+                return "sub eax ebx";
+            case MULT:
+                return "imul eax ebx";
+            case DIV:
+                return "idiv eax ebx";
+        }
+        return "";
+    }
+
 }
