@@ -1,6 +1,11 @@
 public class Node {
 
     public String toASM(){
-        return "[Node sans ASM]";
+        return "\n[Node sans ASM : "+getClass().getName()+"]";
     }
+
+    public String toASMData(){
+        return "";
+    }
+    
 }

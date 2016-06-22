@@ -15,13 +15,12 @@ public class Main {
         String content = new Scanner(new File("grammar/test.txt")).useDelimiter("\\Z").next();
 
         System.out.println(content+"\n\n");
-        System.out.println("TRADUCTION :\n\n");
+        System.out.println("TRADUCTION :\n");
 
         HelloLexer lexer = new HelloLexer( new ANTLRFileStream("grammar/test.txt"));
         CommonTokenStream tokens = new CommonTokenStream( lexer );
         HelloParser parser = new HelloParser( tokens );
-        ParseTree tree = parser.r();
-        ParseTreeWalker walker = new ParseTreeWalker();
-        walker.walk( new HelloWalker(), tree );
+        Root tree = parser.r().root;
+        System.out.println(tree.toASM());
     }
 }

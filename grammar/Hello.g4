@@ -29,8 +29,10 @@ inst returns[Inst instruct]:
 		{$instruct = new Inst($d2.decaf);}
 //	| c=comment
 //		{$instruct = new Inst($c.com);}
-	| b=boucle
-		{$instruct = new Inst($b.b);};
+	| i=if2
+		{$instruct = new Inst($i.i);}
+    | w=while2
+		{$instruct = new Inst($w.w);};
 
 declaration returns[Decl decl]:
 	'var 'l=listvar
@@ -39,14 +41,6 @@ declaration returns[Decl decl]:
 affct returns[Affct aff]:
 	v=VAR':='o=operation
 		{$aff = new Affct(new Var($v.getText()),$o.op);};
-		
-boucle returns[Boucle b]:
-	i=if2
-		{$b = new Boucle($i.i);}
-    | w=while2
-		{$b = new Boucle($w.w);};
-//    | f=for2
-//		{$b = new Boucle($f.for);};
 
 //comment returns[Comment com]:
 //	'/*'(numb|','|';'|'!'|'.'|'?'|'*'|'/')*'*/'
@@ -60,7 +54,7 @@ declaffct returns[Decaf decaf]:
 //		{$i = new If2($c.c,$b.bc);};
 
 if2 returns[If2 i]: 
-    'if('c=cond'){'b=bloc'}''else{'b2=bloc'}' {$i = new If2($c.c,$b.bc,$b2.bc);}
+    'if('c=cond'){'b=bloc'}else{'b2=bloc'}' {$i = new If2($c.c,$b.bc,$b2.bc);}
     | 'if('c=cond'){'b=bloc'}'{$i = new If2($c.c,$b.bc);};
 
     

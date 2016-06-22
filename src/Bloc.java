@@ -13,4 +13,20 @@ public class Bloc extends Node {
     }
 
     public Bloc(){}
+
+    @Override
+    public String toASM() {
+        String output;
+        output=inst.toASM();
+        if(bloc!=null) output=output+bloc.toASM();
+        return output;
+    }
+
+    @Override
+    public String toASMData() {
+        String output;
+        output=inst.toASMData();
+        if(bloc!=null) output=output+bloc.toASMData();
+        return output;
+    }
 }

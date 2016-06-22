@@ -77,16 +77,6 @@ public interface HelloListener extends ParseTreeListener {
 	 */
 	void exitAffct(HelloParser.AffctContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link HelloParser#boucle}.
-	 * @param ctx the parse tree
-	 */
-	void enterBoucle(HelloParser.BoucleContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HelloParser#boucle}.
-	 * @param ctx the parse tree
-	 */
-	void exitBoucle(HelloParser.BoucleContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link HelloParser#declaffct}.
 	 * @param ctx the parse tree
 	 */
