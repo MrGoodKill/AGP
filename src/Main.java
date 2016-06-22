@@ -10,7 +10,10 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static final boolean DEBUG = true;
+
     public static void main(String[] args) throws IOException {
+
         System.out.println("FICHIER DE BASE :\n\n");
 
         String content = new Scanner(new File("grammar/test.txt")).useDelimiter("\\Z").next();

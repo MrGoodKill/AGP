@@ -13,7 +13,11 @@ public class Node {
     public String newLine(String line){
     	
     	String output;
-    	output = "\n\t"+line+"\t\t\t["+getClass().getName()+"]";
+    	if(Main.DEBUG){
+            output = "\n\t"+line+"\t\t\t["+getClass().getName()+"]";
+        } else {
+            output = "\n\t"+line;
+        }
     	return output;
     }
     
