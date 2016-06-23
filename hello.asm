@@ -2,28 +2,43 @@
 extern printf,exit
 section .data
 print:	db "Value Asked=%d", 10, 0
+a:	dd	0
+b:	dd	0
+c:	dd	0
 
 
 section .text
 global main
 
 main:
-	mov eax,[a]			[Final2]
-	push 3			[Final2]
-	pop ebx			[Cond]
-	cmp eax,ebx			[Cond]
-	jne cond2			[Operator]
-	mov eax,[d]			[Final2]
-	push 1			[Final2]
-	pop ebx			[Cond]
-	cmp eax,ebx			[Cond]
-	jne cond1			[Operator]
-	mov eax,5			[Final2]
-	mov [c],eax			[Affct]
+	pop eax
+	mov [c],eax
+	pop eax
+	mov [b],eax
+	pop eax
+	mov [a],eax
+	pop eax
+	mov [c],eax
+	pop eax
+	mov [b],eax
+	pop eax
+	mov [a],eax
+	mov eax,[a]
+	push 3
+	pop ebx
+	cmp eax,ebx
+	jne cond2
+	mov eax,[d]
+	push 1
+	pop ebx
+	cmp eax,ebx
+	jne cond1
+	mov eax,5
+	mov [c],eax
 cond1:
-	mov eax,0			[Final2]
-	mov [a],eax			[Affct]
-	jmp endelse2			[If2]
+	mov eax,0
+	mov [a],eax
+	jmp endelse2
 cond2:
 endelse2:
-	call exit			[Root]
+	call exit
