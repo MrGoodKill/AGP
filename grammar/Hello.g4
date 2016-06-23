@@ -33,6 +33,8 @@ inst returns[Inst instruct]:
 		{$instruct = new Inst($i.i);}
     | w=while2
 		{$instruct = new Inst($w.w);}
+	| as=ask';'
+		{$instruct = new Inst($as.a);}
 	| p=print';'
 		{$instruct = new Inst($p.p);};
 
@@ -45,6 +47,10 @@ print returns[Print p]:
 string2 returns[String2 s]:
 	w=STR
 		{$s = new String2(new Txt($w.getText()));};
+		
+ask returns[Ask a]:
+	'ask('v=WORD')'
+		{$a = new Ask(new Var($v.getText()));};
 
 declaration returns[Decl decl]:
 	'var 'l=listvar
