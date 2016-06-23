@@ -27,8 +27,8 @@ inst returns[Inst instruct]:
 		{$instruct = new Inst($d1.decl);}
 	| d2=declaffct';'
 		{$instruct = new Inst($d2.decaf);}
-//	| c=comment
-//		{$instruct = new Inst($c.com);}
+	| c=comment
+		{$instruct = new Inst($c.com);}
 	| i=if2
 		{$instruct = new Inst($i.i);}
     | w=while2
@@ -47,8 +47,10 @@ affct returns[Affct aff]:
 	v=VAR':='o=operation
 		{$aff = new Affct(new Var($v.getText()),$o.op);};
 
-//comment returns[Comment com]:
-//	'/*'(numb|','|';'|'!'|'.'|'?'|'*'|'/')*'*/';
+comment returns[Comment com]:
+	'/*'(numb|','|';'|'!'|'.'|'?'|'*'|'/')*'*/'
+		{$com = new Comment();};
+		
 		
 declaffct returns[Decaf decaf]:
 	'var 'a=affct

@@ -1,9 +1,13 @@
+import java.util.ArrayList;
+
 public class Prog extends Node {
 
     private ListVar lv;
     private Bloc b;
+    private ArrayList<String> mainList = new ArrayList<String>();
 
-    public Prog(ListVar lv, Bloc b) {
+   
+	public Prog(ListVar lv, Bloc b) {
         this.lv = lv;
         this.b = b;
     }
@@ -13,7 +17,7 @@ public class Prog extends Node {
         return newLabel("global main") +
                newLabel("") +
                newLabel("main:") +
-               declareMainArg() + 
+               toASMPopMain() +
                b.toASM();
     }
 
@@ -22,19 +26,25 @@ public class Prog extends Node {
         String output="";
         for(Var v:lv){
             output=output+newLabel("")+v.name()+ ":\tdd\t0";
+            mainList.add(v.name());
         }
         return output+b.toASMData();
     }
     
-    public String declareMainArg(){
-    	String output = "";
-    	int i = 2;
-    	for(Var v:lv){
-    		output += newLine("mov eax,[esp+" + 4*i + "]") +
-    				newLine("call atoi") + 
-    				newLine("mov [" + v.name() + "], eax");
-    		i++;
-        }
+    public String toASMPopMain(){
+    	
+    	String output="";
+    	for(int i=mainList.size()-1; i>=0; i--){
+    		output=output+newLine("") 
+    		+ "pop eax"
+    		+ newLine("")
+    		+ "mov [" + mainList.get(i) +"],eax";
+    	}
     	return output;
     }
+    
+    public final ArrayList<String> getMainList() {
+		return mainList;
+	}
+
 }
