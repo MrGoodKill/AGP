@@ -5,8 +5,18 @@ r returns [Root root]:
 		{$root = new Root($p.p);};
 		
 prog returns [Prog p]:
-	'main(' l=listvar'){'b=bloc'}'
-		{$p = new Prog($l.lv,$b.bc);};
+	l1=listfunc 'main(' l=listvar'){'b=bloc'}' l2=listfunc
+		{$p = new Prog($l.lv,$b.bc,$l1.lf,$l2.lf);};
+
+listfunc returns [ListFunc lf]:
+	f=function l=listfunc
+		{$lf=new ListFunc($f.fct, $l.lf);}
+	|
+		{$lf=new ListFunc();};
+
+function returns [Func fct]:
+	VAR'('l=listvar'){'b=bloc'}'
+		{$fct = new Func($l.lv,$b.bc);};
 
 listvar returns[ListVar lv]:
 	v=VAR
