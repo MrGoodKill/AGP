@@ -16,7 +16,7 @@ public class Final2 extends Node {
             return op.toASM();
         }
         if(nb!=null){
-            return newLine("")+nb.placeInStack();
+            return newLine(nb.placeInStack());
         }
         return "";
     }
@@ -26,7 +26,7 @@ public class Final2 extends Node {
             return op.toASM();
         }
         if(nb!=null){
-            return newLine("")+nb.placeInEax();
+            return newLine(nb.placeInEax());
         }
         return "";
     }

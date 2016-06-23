@@ -2,31 +2,39 @@ public class Bloc extends Node {
 
     private Inst inst;
     private Bloc bloc;
+    private boolean empty;
 
     public Bloc(Inst inst, Bloc bloc){
         this.inst = inst;
         this.bloc = bloc;
+        this.empty=false;
     }
 
-    public Bloc(Inst inst){
-        this.inst = inst;
+    public Bloc(){
+        this.empty=true;
     }
 
-    public Bloc(){}
+    public boolean isEmpty(){
+        return empty;
+    }
 
     @Override
     public String toASM() {
         String output;
-        output=inst.toASM();
-        if(bloc!=null) output=output+bloc.toASM();
+        if(!isEmpty()){
+            output=inst.toASM();
+            output=output+bloc.toASM();
+        } else output="";
         return output;
     }
 
     @Override
     public String toASMData() {
         String output;
-        output=inst.toASMData();
-        if(bloc!=null) output=output+bloc.toASMData();
+        if(!isEmpty()){
+            output=inst.toASMData();
+            output=output+bloc.toASMData();
+        } else output="";
         return output;
     }
 }
