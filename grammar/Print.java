@@ -11,7 +11,7 @@ public class Print extends Node{
 	public String toASM() {
         String output=	newLine("push dword["+var.name()+"]") +
         				newLine("push dword print") +
-                        newLine("call printf");
+        				newLine("call printf");
         return output;
     }
 }

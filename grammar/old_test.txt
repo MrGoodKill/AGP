@@ -1,0 +1,52 @@
+
+
+main(a,b,c){
+	var x,d,e,f;
+	x:=5;
+	d:=4
+	while(x<10){
+		x:= x + 1;
+		print(x);
+	}
+	if(d=4){
+		d:=(6+2)/4+12*9-4;
+		print(d);
+	}
+	e:=9;
+	if(d=3){
+		e:=4;
+	}
+	else{
+		f:=4;
+		print(f);
+	}
+
+}
+
+
+
+
+main(a,b,c){
+	var x,d,e,f;
+	x:=5;
+	d:=4;
+	while(x<10){
+		print(x);
+		x:= x + 1;
+	}
+	if(d=4){
+		d:=(6*2);
+		print(d);
+		d:=d/4;
+		print(d);
+	}
+	e:=9;
+	if(d=3){
+		e:=4;
+	}
+	else{
+		f:=4;
+		print(f);
+	}
+
+}

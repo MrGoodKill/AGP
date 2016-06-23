@@ -14,7 +14,7 @@ public class Node {
     	
     	String output;
     	if(Main.DEBUG){
-            output = "\n\t"+line+"\t\t\t["+getClass().getName()+"]";
+            output = "\n\t"+line+"\t\t\t;["+getClass().getName()+"]";
         } else {
             output = "\n\t"+line;
         }

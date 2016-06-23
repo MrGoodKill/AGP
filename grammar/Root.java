@@ -16,9 +16,38 @@ public class Root extends Node{
                 newLabel("") + newLabel("") +
                 newLabel("section .text") +
                 p.toASM() +
-                newLine("call exit");
+                newLine("push 0")+
+                newLine("call exit") + 
+                addAtoi();           
         return output;
 
+    }
+    
+    public String addAtoi(){
+    	String output;
+    	output = 
+    			newLabel("atoi:") +
+    			newLine("push ebx") +
+    			newLine("push ecx") +
+				newLine("mov ebx, eax") +
+				newLine("mov eax, 0") +
+				newLine("mov ecx, 0") +
+				newLabel("atoi_loop:") +
+				newLine("cmp byte[ebx], 0") +
+				newLine("je end_atoi") +
+				newLine("mov cl, byte[ebx]") +
+				newLine("sub cl, '0'") +
+				newLine("cmp cl, 9") +
+				newLine("jg end_atoi") +
+				newLine("imul eax, 10") +
+				newLine("add eax, ecx") +
+				newLine("inc ebx") + 
+				newLine("jmp atoi_loop") +
+				newLabel("end_atoi:") +
+				newLine("pop ecx") +
+				newLine("pop ebx") +
+				newLine("ret");
+    	return output;
     }
 
 }

@@ -56,7 +56,10 @@ public class Operator extends Node{
             case MULT:
                 return newLine("imul ebx");
             case DIV:
-                return newLine("idiv ebx");
+                return 	newLine("mov edx,0") +
+                		newLine("mov ecx,eax") +
+                		newLine("mov eax,ebx") +
+                		newLine("idiv ecx");
             case EQU:
                 return newLine("jne cond"+compt);
             case INF:
