@@ -13,7 +13,7 @@ public class Node {
     }
 
     public String getGlobalData(){
-        return globalData;
+        return newLabel("")+"temp:\tdd\t0"+globalData;
     }
     
     public String newLine(String line){

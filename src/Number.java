@@ -2,6 +2,7 @@ public class Number extends Node {
 
     private Const2 c;
     private Var v;
+    private Random r;
 
     public Number(Const2 c) {
         this.c = c;
@@ -11,14 +12,8 @@ public class Number extends Node {
         this.v = v;
     }
 
-    public String getString() {
-        if(c!=null){
-            return ""+c.getValeur();
-        }
-        if(v!=null){
-            return v.name();
-        }
-        return "";
+    public Number(Random r) {
+        this.r = r;
     }
 
     public String placeInEax() {
@@ -27,6 +22,9 @@ public class Number extends Node {
         }
         if(v!=null){
             return "mov eax,["+v.name()+"]";
+        }
+        if(r!=null){
+            return r.toASM()+newLine("pop eax");
         }
         return "";
     }
@@ -37,6 +35,9 @@ public class Number extends Node {
         }
         if(v!=null){
             return "push dword["+v.name()+"]";
+        }
+        if(r!=null){
+            return r.toASM();
         }
         return "";
     }

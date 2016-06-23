@@ -11,9 +11,14 @@ public class Root extends Node{
         String output =
                 newLabel("extern printf,exit") +
                 newLabel("section .data") +
-                newLabel("print:\tdb \"Value Asked=%d\", 10, 0") +
+                newLabel("print:\tdb \"%d\", 10, 0") +
+                newLabel("printstr:\tdb \"%s\", 10, 0") +
+                getGlobalData()+
                 p.toASMData() +
-                newLabel("") + newLabel("") +
+                    newLabel("") + newLabel("") +
+                newLabel("section .bss\n") +
+                newLabel("sinput: resb 255") +
+                    newLabel("") + newLabel("") +
                 newLabel("section .text") +
                 p.toASM() +
                 newLine("push 0")+
@@ -35,6 +40,8 @@ public class Root extends Node{
 				newLabel("atoi_loop:") +
 				newLine("cmp byte[ebx], 0") +
 				newLine("je end_atoi") +
+                newLine("cmp byte[ebx], 10") +
+                newLine("je end_atoi") +
 				newLine("mov cl, byte[ebx]") +
 				newLine("sub cl, '0'") +
 				newLine("cmp cl, 9") +

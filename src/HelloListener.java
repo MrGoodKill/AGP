@@ -107,16 +107,6 @@ public interface HelloListener extends ParseTreeListener {
 	 */
 	void exitAffct(HelloParser.AffctContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link HelloParser#comment}.
-	 * @param ctx the parse tree
-	 */
-	void enterComment(HelloParser.CommentContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link HelloParser#comment}.
-	 * @param ctx the parse tree
-	 */
-	void exitComment(HelloParser.CommentContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link HelloParser#declaffct}.
 	 * @param ctx the parse tree
 	 */
@@ -196,4 +186,14 @@ public interface HelloListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitNumb(HelloParser.NumbContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HelloParser#rand}.
+	 * @param ctx the parse tree
+	 */
+	void enterRand(HelloParser.RandContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HelloParser#rand}.
+	 * @param ctx the parse tree
+	 */
+	void exitRand(HelloParser.RandContext ctx);
 }

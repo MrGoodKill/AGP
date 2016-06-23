@@ -6,7 +6,9 @@ r returns [Root root]:
 		
 prog returns [Prog p]:
 	'main(' l=listvar'){'b=bloc'}'
-		{$p = new Prog($l.lv,$b.bc);};
+		{$p = new Prog($l.lv,$b.bc);}
+	| 'main(){'b=bloc'}'
+		{$p = new Prog($b.bc);};
 
 listvar returns[ListVar lv]:
 	v=WORD
@@ -61,7 +63,7 @@ affct returns[Affct aff]:
 		{$aff = new Affct(new Var($v.getText()),$o.op);};
 
 //comment returns[Comment com]:
-//	'/*'(numb|','|';'|'!'|'.'|'?'|'*'|'/')*'*/';
+//	'/*'(numb|','|';'|'!'|'.'|'?'|'*'|'/')*'*/'
 		
 declaffct returns[Decaf decaf]:
 	'var 'a=affct
@@ -107,7 +109,11 @@ final2 returns [Final2 f] :
 	
 numb returns [Number nb] :
     c=CONST  {$nb=new Number(new Const2($c.getText()));}
-    | v=WORD {$nb=new Number(new Var($v.getText()));};
+    | v=WORD {$nb=new Number(new Var($v.getText()));}
+	| ra=rand {$nb=new Number($ra.ra);};
+
+rand returns [Random ra] :
+	'rand('n=numb')' {$ra=new Random($n.nb);};
 	
 CONST: [0-9]+ ;
 WORD : [a-zA-Z]+ ;

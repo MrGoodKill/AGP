@@ -8,20 +8,41 @@ public class Prog extends Node {
         this.b = b;
     }
 
+    public Prog(Bloc b) {
+        this.b = b;
+    }
+
     @Override
     public String toASM() {
         return newLabel("global main") +
                newLabel("") +
                newLabel("main:") +
+               declareMainArg() + 
                b.toASM();
     }
 
     @Override
     public String toASMData() {
         String output="";
-        for(Var v:lv){
-            output=output+newLabel("")+v.name()+ ":\tdd\t0";
+        if(lv!=null) {
+            for (Var v : lv) {
+                output = output + newLabel("") + v.name() + ":\tdd\t0";
+            }
         }
-        return output+b.toASMData();
+        return output + b.toASMData();
+    }
+    
+    public String declareMainArg(){
+    	String output = "";
+    	int i = 2;
+        if(lv!=null) {
+            for (Var v : lv) {
+                output += newLine("mov eax,[esp+" + 4 * i + "]") +
+                        newLine("call atoi") +
+                        newLine("mov [" + v.name() + "], eax");
+                i++;
+            }
+        }
+    	return output;
     }
 }

@@ -6,6 +6,7 @@ public class Inst extends Node {
     private If2 if2;
     private While2 while2;
     private Print print;
+    private Ask ask;
     private InstructionType type;
 
     public Inst(Affct affct){
@@ -38,6 +39,11 @@ public class Inst extends Node {
         type = InstructionType.Print;
     }
 
+    public Inst(Ask ask){
+        this.ask = ask;
+        type = InstructionType.Ask;
+    }
+
 
     @Override
     public String toASM() {
@@ -54,7 +60,9 @@ public class Inst extends Node {
             case While2: output= while2.toASM();
                 break;
             case Print: output= print.toASM();
-            break;
+                break;
+            case Ask: output= ask.toASM();
+                break;
         }
         return output;
     }
@@ -75,6 +83,8 @@ public class Inst extends Node {
                 break;
             case Print: output= print.toASMData();
             	break;
+            case Ask: output= ask.toASMData();
+                break;
         }
         return output;
     }

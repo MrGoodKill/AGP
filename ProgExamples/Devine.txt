@@ -1,15 +1,16 @@
 main(){
+	print("");
 	print("                'Je pense à un nombre'");
 	print("Le premier jeu programmé entierement en langage AGP !");
 	print("                         ----");
 	print("");
 	print("                         ----");
 	print("");
-	var nombre:=rand(100);
+	var nombre:=rand(101);
 	var answer:=0;
 	var victoire:=0;
 	var nbcoup:=0;
-	print("Je pense à un nombre...");
+	print("Je pense à un nombre entre 0 et 100...");
 	while(victoire=0){
 		nbcoup:=nbcoup+1;
 		print("A ton avis, ce nombre est : ");
