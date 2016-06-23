@@ -12,6 +12,10 @@ public class Prog extends Node {
         this.b = b;
     }
 
+    public Prog(Bloc b) {
+        this.b = b;
+    }
+
     @Override
     public String toASM() {
         return newLabel("global main") +
@@ -24,13 +28,16 @@ public class Prog extends Node {
     @Override
     public String toASMData() {
         String output="";
-        for(Var v:lv){
-            output=output+newLabel("")+v.name()+ ":\tdd\t0";
-            mainList.add(v.name());
+        if(lv!=null) {
+            for (Var v : lv) {
+                output = output + newLabel("") + v.name() + ":\tdd\t0";
+				mainList.add(v.name());
+            }
         }
-        return output+b.toASMData();
+        return output + b.toASMData();
     }
     
+
     public String toASMPopMain(){
     	
     	String output="";
@@ -40,6 +47,7 @@ public class Prog extends Node {
     		+ newLine("")
     		+ "mov [" + mainList.get(i) +"],eax";
     	}
+
     	return output;
     }
     

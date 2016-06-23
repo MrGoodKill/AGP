@@ -1,0 +1,31 @@
+
+extern printf,exit
+section .data
+print:	db "Value Asked=%d", 10, 0
+a:	dd	0
+
+
+section .text
+global main
+
+main:
+	mov eax,0
+	mov [a],eax
+while1:
+	mov eax,[a]
+	push 5
+	pop ebx
+	cmp eax,ebx
+	jge cond1
+	push 1
+	mov eax,[a]
+	pop ebx
+	add eax,ebx
+	mov [a],eax
+	jmp while1
+cond1:
+	push dword[a]
+	push dword print
+	call printf
+	push 1
+	call exit

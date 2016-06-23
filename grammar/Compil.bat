@@ -5,7 +5,7 @@ doskey grun =java org.antlr.v4.gui.TestRig $*
 del *.java
 del *.class
 for %%I in (..\src\*.java) do copy ..\src\%%I
-start antlr4 Hello.g4
+start antlr4 Hello.g4 -encoding UTF-8
 echo Wait for it...
 ping 192.0.2.2 -n 1 -w 2000 > nul
 javac Hello*.java

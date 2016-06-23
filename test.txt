@@ -1,0 +1,32 @@
+main(){
+	/*Ce glorieux programme a été pensé et programmé par son non moins glorieux créateur Pierre-Marie Ageneau*/
+	print("                'Je pense à un nombre'");
+	print("Le premier jeu programmé entierement en langage AGP !");
+	print("                         ----");
+	print("");
+	print("                         ----");
+	print("");
+	var nombre:=rand(100);
+	var answer:=0;
+	var victoire:=0;
+	var nbcoup:=0;
+	print("Je pense à un nombre...");
+	while(victoire=0){
+		nbcoup:=nbcoup+1;
+		print("A ton avis, ce nombre est : ");
+		ask(answer);
+		if(answer=nombre){
+			print("Argggg ! Tu m'as vaincu...");
+			victoire:=1;
+			print("");
+			print("Nombre de coups nécessaires pour gagner : ");
+			print(nbcoup);
+		}
+		if(answer>nombre){
+			print("Non malheureux ! C'est plus petit que ça!");
+		}
+		if(answer<nombre){
+			print("Ahaha non ! Mon nombre est beaucoup plus grand que le tien, comme ma bite !");
+		}
+	}
+}
