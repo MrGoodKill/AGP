@@ -1,6 +1,8 @@
 public class Node {
 	
     protected static int condCpt=1;
+    protected static int stringIndex=1;
+    protected static String globalData="";
 
     public String toASM(){
         return "\n[Node sans ASM : "+getClass().getName()+"]";
@@ -8,6 +10,10 @@ public class Node {
 
     public String toASMData(){
         return "";
+    }
+
+    public String getGlobalData(){
+        return globalData;
     }
     
     public String newLine(String line){

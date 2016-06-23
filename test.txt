@@ -1,0 +1,13 @@
+main(a){
+	a:=0;
+	while(a<3){
+		a:=a+1;
+		print(a);
+	}
+	print("T'es une oie !");
+	while(a<6){
+		a:=a+1;
+		print(a);
+	}
+	print("T'es une saucisse !");
+}
