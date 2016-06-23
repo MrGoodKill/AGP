@@ -16,8 +16,9 @@ public class Root extends Node{
                 newLabel("") + newLabel("") +
                 newLabel("section .text") +
                 p.toASM() +
+                newLine("push 0")+
                 newLine("call exit") + 
-                addAtoi();
+                addAtoi();           
         return output;
 
     }
@@ -31,7 +32,7 @@ public class Root extends Node{
 				newLine("mov ebx, eax") +
 				newLine("mov eax, 0") +
 				newLine("mov ecx, 0") +
-				newLine("atoi_loop:") +
+				newLabel("atoi_loop:") +
 				newLine("cmp byte[ebx], 0") +
 				newLine("je end_atoi") +
 				newLine("mov cl, byte[ebx]") +

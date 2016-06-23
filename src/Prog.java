@@ -13,6 +13,7 @@ public class Prog extends Node {
         return newLabel("global main") +
                newLabel("") +
                newLabel("main:") +
+               declareMainArg() + 
                b.toASM();
     }
 
@@ -23,5 +24,17 @@ public class Prog extends Node {
             output=output+newLabel("")+v.name()+ ":\tdd\t0";
         }
         return output+b.toASMData();
+    }
+    
+    public String declareMainArg(){
+    	String output = "";
+    	int i = 2;
+    	for(Var v:lv){
+    		output += newLine("mov eax,[esp+" + 4*i + "]") +
+    				newLine("call atoi") + 
+    				newLine("mov [" + v.name() + "], eax");
+    		i++;
+        }
+    	return output;
     }
 }
