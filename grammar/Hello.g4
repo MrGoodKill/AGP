@@ -48,7 +48,7 @@ affct returns[Affct aff]:
 		{$aff = new Affct(new Var($v.getText()),$o.op);};
 
 //comment returns[Comment com]:
-//	'/*'(numb|','|';'|'!'|'.'|'?'|'*'|'/')*'*/'
+//	'/*'(numb|','|';'|'!'|'.'|'?'|'*'|'/')*'*/';
 		
 declaffct returns[Decaf decaf]:
 	'var 'a=affct
