@@ -18,6 +18,10 @@ public class Prog extends Node {
 
     @Override
     public String toASMData() {
-        return lv.toASMData()+b.toASMData();
+        String output="";
+        for(Var v:lv){
+            output=output+newLabel("")+v.name()+ ":\tdd\t0";
+        }
+        return output+b.toASMData();
     }
 }
