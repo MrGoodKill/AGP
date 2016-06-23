@@ -31,7 +31,7 @@ public class Root extends Node{
 				newLine("mov ebx, eax") +
 				newLine("mov eax, 0") +
 				newLine("mov ecx, 0") +
-				newLabel("atoi_loop:") +
+				newLine("atoi_loop:") +
 				newLine("cmp byte[ebx], 0") +
 				newLine("je end_atoi") +
 				newLine("mov cl, byte[ebx]") +
