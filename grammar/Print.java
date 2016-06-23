@@ -9,9 +9,9 @@ public class Print extends Node{
 	
 	@Override
 	public String toASM() {
-        String output=	"push dword["+var.name()+"]" +
-        				"push dword print:" +
-        				"call printf";
+        String output=	newLine("push dword["+var.name()+"]") +
+        				newLine("push dword print") +
+                        newLine("call printf");
         return output;
     }
 }
