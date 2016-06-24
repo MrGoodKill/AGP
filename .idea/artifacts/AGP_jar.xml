@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/AGP_jar</output-path>
     <root id="archive" name="AGP.jar">
       <element id="module-output" name="AGP" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/antlr-4.5.3-complete.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/grammar/antlr-4.5.3-complete.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
