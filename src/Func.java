@@ -21,6 +21,8 @@ public class Func extends Node{
 				+ newLabel(name + ":")
 				+ toASMPopFunc()
 				+ bloc.toASM()
+				+ newLine("mov eax,[funcReturn]")
+				+ newLine("push eax")
 				+ newLine("ret");
 		return output;
 	}
@@ -39,6 +41,8 @@ public class Func extends Node{
 	public String toASMPopFunc(){
     	
     	String output="";
+    	output += 	newLine("pop eax")
+    				+ newLine("mov [funcReturn],eax");
     	for(int i=paramList.size()-1; i>=0; i--){
     		output=output
     		+ newLine("pop eax")
