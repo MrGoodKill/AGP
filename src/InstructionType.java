@@ -6,7 +6,8 @@ public enum InstructionType {
     While2,
     Comment,
     Ask,
-	Print;
+	Print,
+	Call;
 
     public boolean isAffct(){
         return this.equals(Affct);
@@ -31,5 +32,8 @@ public enum InstructionType {
     }
     public boolean isAsk(){
         return this.equals(Ask);
+    }
+    public boolean isCall(){
+        return this.equals(Call);
     }
 }

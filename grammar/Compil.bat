@@ -22,4 +22,4 @@ echo.
 echo Fini !
 echo.
 echo.
-grun Hello r -gui ../test.txt
+grun Hello r -gui ../grammar/test.txt

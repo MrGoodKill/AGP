@@ -8,6 +8,7 @@ public class Inst extends Node {
     private Print print;
     private Comment comment;
     private Ask ask;
+    private CallFunction call;
     private InstructionType type;
 
     public Inst(Affct affct){
@@ -50,6 +51,11 @@ public class Inst extends Node {
         this.ask = ask;
         type = InstructionType.Ask;
     }
+    
+    public Inst(CallFunction call){
+    	this.call = call;
+    	type = InstructionType.Call;
+    }
 
 
     @Override
@@ -72,6 +78,8 @@ public class Inst extends Node {
                 break;
             case Ask: output= ask.toASM();
                 break;
+            case Call: output= call.toASM();
+            break;
         }
         return output;
     }
@@ -94,6 +102,8 @@ public class Inst extends Node {
             	break;
             case Ask: output= ask.toASMData();
                 break;
+            case Call: output= call.toASMData();
+            break;
         }
         return output;
     }
