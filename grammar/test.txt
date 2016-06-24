@@ -4,6 +4,7 @@ main(a){
 	b:=func(a);
 	print(b);
 
+	func(a);
 
 	if(a=3){
 		if(a=1){

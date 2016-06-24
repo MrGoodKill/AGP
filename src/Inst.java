@@ -57,6 +57,11 @@ public class Inst extends Node {
     	this.return2 = return2;
     	type = InstructionType.Return2;
     }
+    
+    public Inst(CallFunction call){
+    	this.call = call;
+    	type = InstructionType.Call;
+    }
 
 
     @Override
@@ -81,6 +86,8 @@ public class Inst extends Node {
                 break;
             case Return2: output= return2.toASM();
             break;
+            case Call: output= call.toASM();
+            break;
         }
         return output;
     }
@@ -104,6 +111,8 @@ public class Inst extends Node {
             case Ask: output= ask.toASMData();
                 break;
             case Return2: output= return2.toASMData();
+            break;
+            case Call: output= call.toASMData();
             break;
         }
         return output;

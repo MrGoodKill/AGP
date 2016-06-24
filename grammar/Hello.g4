@@ -50,7 +50,9 @@ inst returns[Inst instruct]:
 	| p=print';'
 		{$instruct = new Inst($p.p);}
 	| re=return2';'
-		{$instruct = new Inst($re.ret);};
+		{$instruct = new Inst($re.ret);}
+	| ca=callFunction';'
+		{$instruct = new Inst($ca.call);};
 
 return2 returns[Return2 ret]:
 	'return 'v=WORD {$ret = new Return2(new Var($v.getText()));};
