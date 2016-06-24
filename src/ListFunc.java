@@ -10,7 +10,17 @@ public class ListFunc extends Node{
 	}
 	
 	public String toASM(){
-		
+		String output;
+        output=function.toASM();
+        output=output+listFunc.toASM();
+        return output;
+	}
+	
+	public String toASMData(){
+		String output;
+        output=function.toASMData();
+        output=output+listFunc.toASMData();
+        return output;
 	}
 	
 }
