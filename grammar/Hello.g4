@@ -49,8 +49,13 @@ inst returns[Inst instruct]:
 		{$instruct = new Inst($as.a);}
 	| p=print';'
 		{$instruct = new Inst($p.p);}
-	| call=callFunction';'
-		{$instruct = new Inst($call.call);};
+	| re=return2';'
+		{$instruct = new Inst($re.ret);}
+	| ca=callFunction';'
+		{$instruct = new Inst($ca.call);};
+
+return2 returns[Return2 ret]:
+	'return 'v=WORD {$ret = new Return2(new Var($v.getText()));};
 
 callFunction returns[CallFunction call]:
 	v=WORD'('l=listvar')'
@@ -127,7 +132,8 @@ final2 returns [Final2 f] :
 numb returns [Number nb] :
     c=CONST  {$nb=new Number(new Const2($c.getText()));}
     | v=WORD {$nb=new Number(new Var($v.getText()));}
-	| ra=rand {$nb=new Number($ra.ra);};
+	| ra=rand {$nb=new Number($ra.ra);}
+	| ca=callFunction {$nb = new Number($ca.call);};
 
 rand returns [Random ra] :
 	'rand('n=numb')' {$ra=new Random($n.nb);};
