@@ -26,11 +26,12 @@ public class Main {
         CommonTokenStream tokens = new CommonTokenStream( lexer );
         HelloParser parser = new HelloParser( tokens );
         Root tree = parser.r().root;
-        
-        System.out.println(tree.toASM());
+
+        String sortie = tree.toASM();
+        System.out.println(sortie);
         
         PrintWriter writer = new PrintWriter("hello.asm", "UTF-8");
-        writer.println(tree.toASM());
+        writer.println(sortie);
         writer.close();
     }
 }
