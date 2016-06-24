@@ -27,6 +27,7 @@ public class Prog extends Node {
         String output = newLabel("global main") +
                newLabel("");
         if(listFunc1!=null) output += listFunc1.toASM();
+        setGlobalFctName("main");
         output += newLabel("main:") +
                toASMPopMain() +
                b.toASM() +
@@ -41,8 +42,8 @@ public class Prog extends Node {
         String output="";
         if(lv!=null) {
             for (Var v : lv) {
-                output = output + newLabel("") + v.name() + ":\tdd\t0";
-				mainList.add(v.name());
+                output = output + newLabel("") + v.getName() + ":\tdd\t0";
+				mainList.add(v.getName());
             }
         }
         output += b.toASMData();
@@ -55,11 +56,13 @@ public class Prog extends Node {
     public String toASMPopMain(){
 	String output = "";
     int i = 2;
-    for(Var v:lv){
-        output += newLine("mov eax,[esp+" + 4*i + "]") +
-                newLine("call atoi") + 
-                newLine("mov [" + v.name() + "], eax");
-        i++;
+    if(lv!=null) {
+        for (Var v : lv) {
+            output += newLine("mov eax,[esp+" + 4 * i + "]") +
+                    newLine("call atoi") +
+                    newLine("mov [" + v.getName() + "], eax");
+            i++;
+        }
     }
     return output;
     }

@@ -6,7 +6,11 @@ public class Var extends Node {
         this.texte = text;
     }
 
-    public String name(){
+    public String getName(){
+        return getGlobalFctName()+"$"+texte;
+    }
+
+    public String getNameWithoutHeader(){
         return texte;
     }
 }

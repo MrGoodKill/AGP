@@ -1,5 +1,5 @@
 main(){
-	/*Ce glorieux programme a été pensé et programmé par son non moins glorieux créateur Pierre-Marie Ageneau*/
+	/*Ce glorieux programme a ete pense et programme par son non moins glorieux createur Pierre-Marie Ageneau*/
 	print("");
 	print("                'Je pense à un nombre'");
 	print("Le premier jeu programmé entierement en langage AGP !");
@@ -27,7 +27,7 @@ main(){
 			print("Non malheureux ! C'est plus petit que ça!");
 		}
 		if(answer<nombre){
-			print("Ahaha non ! Mon nombre est beaucoup plus grand que le tien, comme ma bite !");
+			print("Non pauvre fou ! C'est plus grand !");
 		}
 	}
 }

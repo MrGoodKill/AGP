@@ -21,7 +21,7 @@ public class Number extends Node {
             return "mov eax,"+c.getValeur();
         }
         if(v!=null){
-            return "mov eax,["+v.name()+"]";
+            return "mov eax,["+v.getName()+"]";
         }
         if(r!=null){
             return r.toASM()+newLine("pop eax");
@@ -34,7 +34,7 @@ public class Number extends Node {
             return "push "+c.getValeur();
         }
         if(v!=null){
-            return "push dword["+v.name()+"]";
+            return "push dword["+v.getName()+"]";
         }
         if(r!=null){
             return r.toASM();

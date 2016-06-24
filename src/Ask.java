@@ -17,7 +17,7 @@ public class Ask extends Node{
                 newLine("int 80h") +
                 newLine("mov eax, sinput") +
                 newLine("call atoi") +
-                newLine("mov [" + var.name() + "], eax");
+                newLine("mov [" + var.getName() + "], eax");
         return output;
     }
 }
