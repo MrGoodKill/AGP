@@ -23,7 +23,7 @@ public class Bloc extends Node {
         String output;
         if(!isEmpty()){
             output=inst.toASM();
-            output=output+bloc.toASM();
+            output=output+bloc.toASM();		//if(bloc!=null) a verifier avant?
         } else output="";
         return output;
     }
@@ -33,7 +33,7 @@ public class Bloc extends Node {
         String output;
         if(!isEmpty()){
             output=inst.toASMData();
-            output=output+bloc.toASMData();
+            output=output+bloc.toASMData(); //if(bloc!=null) a verifier avant?
         } else output="";
         return output;
     }

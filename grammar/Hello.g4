@@ -5,13 +5,25 @@ r returns [Root root]:
 		{$root = new Root($p.p);};
 		
 prog returns [Prog p]:
-	'main(' l=listvar'){'b=bloc'}'
-		{$p = new Prog($l.lv,$b.bc);};
+	l1=listfunc 'main(' l=listvar'){'b=bloc'}' l2=listfunc
+		{$p = new Prog($l.lv,$b.bc,$l1.lf,$l2.lf);}
+	| l1=listfunc 'main(){'b=bloc'}' l2=listfunc
+		{$p = new Prog($b.bc,$l1.lf,$l2.lf);};
+
+
+listfunc returns [ListFunc lf]:
+	f=function l=listfunc
+		{$lf=new ListFunc($f.fct, $l.lf);}
+	| {$lf = new ListFunc();};
+
+function returns [Func fct]:
+	v=WORD'('l=listvar'){'b=bloc'}'
+		{$fct = new Func($l.lv,$b.bc,new Var($v.getText()));};
 
 listvar returns[ListVar lv]:
-	v=VAR
+	v=WORD
 		{$lv = new ListVar(new Var($v.getText()));}
-	| v=VAR','l=listvar
+	| v=WORD','l=listvar
 		{$lv = new ListVar(new Var($v.getText()),$l.lv);};
 
 bloc returns[Bloc bc]:
@@ -27,28 +39,42 @@ inst returns[Inst instruct]:
 		{$instruct = new Inst($d1.decl);}
 	| d2=declaffct';'
 		{$instruct = new Inst($d2.decaf);}
-//	| c=comment
-//		{$instruct = new Inst($c.com);}
+	| c=comment
+		{$instruct = new Inst($c.com);}
 	| i=if2
 		{$instruct = new Inst($i.i);}
     | w=while2
 		{$instruct = new Inst($w.w);}
+	| as=ask';'
+		{$instruct = new Inst($as.a);}
 	| p=print';'
 		{$instruct = new Inst($p.p);};
 
 print returns[Print p]:
-	'print('v=VAR')' {$p = new Print(new Var($v.getText()));};
+	'print('v=WORD')'
+		{$p = new Print(new Var($v.getText()));}
+	| 'print('s=string2')'
+		{$p = new Print($s.s);};
+		
+string2 returns[String2 s]:
+	w=STR
+		{$s = new String2(new Txt($w.getText()));};
+		
+ask returns[Ask a]:
+	'ask('v=WORD')'
+		{$a = new Ask(new Var($v.getText()));};
 
 declaration returns[Decl decl]:
 	'var 'l=listvar
 		{$decl = new Decl($l.lv);};
 		
 affct returns[Affct aff]:
-	v=VAR':='o=operation
+	v=WORD':='o=operation
 		{$aff = new Affct(new Var($v.getText()),$o.op);};
 
-//comment returns[Comment com]:
-//	'/*'(numb|','|';'|'!'|'.'|'?'|'*'|'/')*'*/';
+comment returns[Comment com]:
+	'/*'(numb|','|';'|'!'|'.'|'?'|'*'|'/'|'-'|'Ã'|'©'|'¨')*'*/'
+		{$com = new Comment();};
 		
 declaffct returns[Decaf decaf]:
 	'var 'a=affct
@@ -94,9 +120,14 @@ final2 returns [Final2 f] :
 	
 numb returns [Number nb] :
     c=CONST  {$nb=new Number(new Const2($c.getText()));}
-    | v=VAR {$nb=new Number(new Var($v.getText()));};
+    | v=WORD {$nb=new Number(new Var($v.getText()));}
+	| ra=rand {$nb=new Number($ra.ra);};
 
+rand returns [Random ra] :
+	'rand('n=numb')' {$ra=new Random($n.nb);};
+	
 CONST: [0-9]+ ;
-VAR : [a-zA-Z]+ ;
-
+WORD : [a-zA-Z]+ ;
+PCT : [?!;:.] ;
 WS : [ \t\r\n]+ -> skip ;
+STR : '"'(.)*?'"';
