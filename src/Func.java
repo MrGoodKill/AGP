@@ -31,7 +31,7 @@ public class Func extends Node{
 		for(Var v:listvar){
             output=output+newLabel("") + v.name() + ":\tdd\t0";
             paramList.add(v.name());
-        }
+            }
         return output+bloc.toASMData();
     }
 
