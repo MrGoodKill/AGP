@@ -3,6 +3,7 @@ public class Number extends Node {
     private Const2 c;
     private Var v;
     private Random r;
+    private CallFunction call;
 
     public Number(Const2 c) {
         this.c = c;
@@ -15,6 +16,11 @@ public class Number extends Node {
     public Number(Random r) {
         this.r = r;
     }
+    
+    public Number(CallFunction call) {
+        this.call = call;
+    }
+
 
     public String placeInEax() {
         if(c!=null){
@@ -25,6 +31,9 @@ public class Number extends Node {
         }
         if(r!=null){
             return r.toASM()+newLine("pop eax");
+        }
+        if(call!=null){
+        	return call.toASM()+newLine("pop eax");
         }
         return "";
     }
@@ -38,6 +47,9 @@ public class Number extends Node {
         }
         if(r!=null){
             return r.toASM();
+        }
+        if(call!=null){
+            return call.toASM();
         }
         return "";
     }

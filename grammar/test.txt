@@ -1,4 +1,9 @@
 main(a){
+
+	var b;
+	b:=func(a);
+
+
 	if(a=3){
 		if(a=1){
 			a:=5;
@@ -10,8 +15,7 @@ main(a){
 /* hello guys */
 	print(a);
 	a:= a + 1;
-	a:= ((a+2)/8)-4*(8+3);
-	func(a);
+	a:=func(a);
 }
 
 func(c){
