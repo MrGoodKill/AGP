@@ -17,7 +17,7 @@ listfunc returns [ListFunc lf]:
 	| {$lf = new ListFunc();};
 
 function returns [Func fct]:
-	v=VAR'('l=listvar'){'b=bloc'}'
+	v=WORD'('l=listvar'){'b=bloc'}'
 		{$fct = new Func($l.lv,$b.bc,new Var($v.getText()));};
 
 listvar returns[ListVar lv]:
