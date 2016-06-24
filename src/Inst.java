@@ -9,6 +9,7 @@ public class Inst extends Node {
     private Comment comment;
     private Ask ask;
     private CallFunction call;
+    private Return2 return2;
     private InstructionType type;
 
     public Inst(Affct affct){
@@ -52,9 +53,9 @@ public class Inst extends Node {
         type = InstructionType.Ask;
     }
     
-    public Inst(CallFunction call){
-    	this.call = call;
-    	type = InstructionType.Call;
+    public Inst(Return2 return2){
+    	this.return2 = return2;
+    	type = InstructionType.Return2;
     }
 
 
@@ -78,7 +79,7 @@ public class Inst extends Node {
                 break;
             case Ask: output= ask.toASM();
                 break;
-            case Call: output= call.toASM();
+            case Return2: output= return2.toASM();
             break;
         }
         return output;
@@ -102,7 +103,7 @@ public class Inst extends Node {
             	break;
             case Ask: output= ask.toASMData();
                 break;
-            case Call: output= call.toASMData();
+            case Return2: output= return2.toASMData();
             break;
         }
         return output;

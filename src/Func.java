@@ -21,9 +21,8 @@ public class Func extends Node{
 				+ newLabel(name + ":")
 				+ toASMPopFunc()
 				+ bloc.toASM()
-				+ newLine("mov eax,[funcReturn]")
-				+ newLine("push eax")
-				+ newLine("ret");
+				+ newLine("pop eax")
+				+ newLine("mov eax,[funcReturn]");
 		return output;
 	}
 	

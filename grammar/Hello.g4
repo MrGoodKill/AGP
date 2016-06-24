@@ -48,9 +48,12 @@ inst returns[Inst instruct]:
 	| as=ask';'
 		{$instruct = new Inst($as.a);}
 	| p=print';'
-		{$instruct = new Inst($p.p);};
-//	| call=callFunction';'
-//		{$instruct = new Inst($call.call);};
+		{$instruct = new Inst($p.p);}
+	| re=return2';'
+		{$instruct = new Inst($re.ret);};
+
+return2 returns[Return2 ret]:
+	'return 'v=WORD {$ret = new Return2(new Var($v.getText()));};
 
 callFunction returns[CallFunction call]:
 	v=WORD'('l=listvar')'

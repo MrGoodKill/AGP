@@ -77,6 +77,16 @@ public interface HelloListener extends ParseTreeListener {
 	 */
 	void exitInst(HelloParser.InstContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link HelloParser#return2}.
+	 * @param ctx the parse tree
+	 */
+	void enterReturn2(HelloParser.Return2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link HelloParser#return2}.
+	 * @param ctx the parse tree
+	 */
+	void exitReturn2(HelloParser.Return2Context ctx);
+	/**
 	 * Enter a parse tree produced by {@link HelloParser#callFunction}.
 	 * @param ctx the parse tree
 	 */

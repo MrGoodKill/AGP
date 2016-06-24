@@ -99,6 +99,18 @@ public class HelloBaseListener implements HelloListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterReturn2(HelloParser.Return2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitReturn2(HelloParser.Return2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCallFunction(HelloParser.CallFunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}

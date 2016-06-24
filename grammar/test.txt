@@ -2,6 +2,7 @@ main(a){
 
 	var b;
 	b:=func(a);
+	print(b);
 
 
 	if(a=3){
@@ -20,4 +21,6 @@ main(a){
 
 func(c){
 	print(c);
+	c:= c + 2;
+	return c;
 }
