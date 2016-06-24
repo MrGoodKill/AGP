@@ -11,12 +11,11 @@ prog returns [Prog p]:
 listfunc returns [ListFunc lf]:
 	f=function l=listfunc
 		{$lf=new ListFunc($f.fct, $l.lf);}
-	|
-		{$lf=new ListFunc();};
+	| {$lf = new ListFunc();};
 
 function returns [Func fct]:
-	VAR'('l=listvar'){'b=bloc'}'
-		{$fct = new Func($l.lv,$b.bc);};
+	v=VAR'('l=listvar'){'b=bloc'}'
+		{$fct = new Func($l.lv,$b.bc,new Var($v.getText()));};
 
 listvar returns[ListVar lv]:
 	v=VAR

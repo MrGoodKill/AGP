@@ -16,8 +16,6 @@ public class Root extends Node{
                 newLabel("") + newLabel("") +
                 newLabel("section .text") +
                 p.toASM() +
-                newLine("push 0")+
-                newLine("call exit") + 
                 addAtoi();           
         return output;
 

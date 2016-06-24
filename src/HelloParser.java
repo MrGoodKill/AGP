@@ -243,7 +243,6 @@ public class HelloParser extends Parser {
 			case T__0:
 				enterOuterAlt(_localctx, 2);
 				{
-				((ListfuncContext)_localctx).lf = new ListFunc();
 				}
 				break;
 			default:
@@ -263,6 +262,7 @@ public class HelloParser extends Parser {
 
 	public static class FunctionContext extends ParserRuleContext {
 		public Func fct;
+		public Token v;
 		public ListvarContext l;
 		public BlocContext b;
 		public TerminalNode VAR() { return getToken(HelloParser.VAR, 0); }
@@ -293,7 +293,7 @@ public class HelloParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(57);
-			match(VAR);
+			((FunctionContext)_localctx).v = match(VAR);
 			setState(58);
 			match(T__3);
 			setState(59);
@@ -304,7 +304,7 @@ public class HelloParser extends Parser {
 			((FunctionContext)_localctx).b = bloc();
 			setState(62);
 			match(T__2);
-			((FunctionContext)_localctx).fct =  new Func(((FunctionContext)_localctx).l.lv,((FunctionContext)_localctx).b.bc);
+			((FunctionContext)_localctx).fct =  new Func(((FunctionContext)_localctx).l.lv,((FunctionContext)_localctx).b.bc,new Var(((FunctionContext)_localctx).v.getText()));
 			}
 		}
 		catch (RecognitionException re) {
@@ -1458,7 +1458,7 @@ public class HelloParser extends Parser {
 		"\2&\u00f6\3\2\2\2()\5\4\3\2)*\b\2\1\2*\3\3\2\2\2+,\5\6\4\2,-\7\3\2\2-"+
 		".\5\n\6\2./\7\4\2\2/\60\5\f\7\2\60\61\7\5\2\2\61\62\5\6\4\2\62\63\b\3"+
 		"\1\2\63\5\3\2\2\2\64\65\5\b\5\2\65\66\5\6\4\2\66\67\b\4\1\2\67:\3\2\2"+
-		"\28:\b\4\1\29\64\3\2\2\298\3\2\2\2:\7\3\2\2\2;<\7\37\2\2<=\7\6\2\2=>\5"+
+		"\28:\3\2\2\29\64\3\2\2\298\3\2\2\2:\7\3\2\2\2;<\7\37\2\2<=\7\6\2\2=>\5"+
 		"\n\6\2>?\7\4\2\2?@\5\f\7\2@A\7\5\2\2AB\b\5\1\2B\t\3\2\2\2CD\7\37\2\2D"+
 		"K\b\6\1\2EF\7\37\2\2FG\7\7\2\2GH\5\n\6\2HI\b\6\1\2IK\3\2\2\2JC\3\2\2\2"+
 		"JE\3\2\2\2K\13\3\2\2\2LM\5\16\b\2MN\5\f\7\2NO\b\7\1\2OR\3\2\2\2PR\b\7"+

@@ -1,3 +1,7 @@
+functi(c,b){
+	print(c);
+}
+
 main(a){
 	if(a=3){
 		if(a=1){
@@ -8,4 +12,9 @@ main(a){
 	else{
 	}
 /* hello guys */
+	print(a);
+}
+
+func(c,b){
+	print(c);
 }

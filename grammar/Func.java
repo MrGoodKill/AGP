@@ -5,7 +5,7 @@ public class Func extends Node{
 	private ListVar listvar;
 	private Bloc bloc;
 	private String name;
-	private ArrayList<String> paramList;
+	private ArrayList<String> paramList = new ArrayList<String>();
 	
 	public Func(ListVar listvar, Bloc bloc, Var funcName){
 		
@@ -27,9 +27,8 @@ public class Func extends Node{
 	
 	public String toASMData(){
 		String output="";
-	    paramList = new ArrayList<String>();
-		for(Var v:listvar){
-            output=output+newLabel("") + v.name() + ":\tdd\t0";
+	    for(Var v:listvar){
+            output=output+newLabel("")+v.name()+ ":\tdd\t0";
             paramList.add(v.name());
         }
         return output+bloc.toASMData();

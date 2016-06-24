@@ -4,21 +4,30 @@ public class Prog extends Node {
 
     private ListVar lv;
     private Bloc b;
+    private ListFunc listFunc1;
+    private ListFunc listFunc2;
     private ArrayList<String> mainList = new ArrayList<String>();
 
    
-	public Prog(ListVar lv, Bloc b) {
+	public Prog(ListVar lv, Bloc b, ListFunc listFunc1, ListFunc listFunc2) {
         this.lv = lv;
         this.b = b;
+        this.listFunc1 = listFunc1;
+        this.listFunc2 = listFunc2;
     }
 
     @Override
     public String toASM() {
-        return newLabel("global main") +
-               newLabel("") +
-               newLabel("main:") +
+        String output = newLabel("global main") +
+               newLabel("");
+        if(listFunc1!=null) output += listFunc1.toASM();
+        output += newLabel("main:") +
                toASMPopMain() +
-               b.toASM();
+               b.toASM() +
+        newLine("push 0") +
+        newLine("call exit");
+        if(listFunc2!=null) output += listFunc2.toASM();
+        return output;
     }
 
     @Override
@@ -28,19 +37,22 @@ public class Prog extends Node {
             output=output+newLabel("")+v.name()+ ":\tdd\t0";
             mainList.add(v.name());
         }
-        return output+b.toASMData();
+        output += b.toASMData();
+        if(listFunc1!=null) output += listFunc1.toASMData(); 
+        if(listFunc2!=null) output += listFunc2.toASMData();
+        return output;
     }
     
     public String toASMPopMain(){
-    	
-    	String output="";
-    	for(int i=mainList.size()-1; i>=0; i--){
-    		output=output+newLine("") 
-    		+ "pop eax"
-    		+ newLine("")
-    		+ "mov [" + mainList.get(i) +"],eax";
-    	}
-    	return output;
+    	String output = "";
+        int i = 2;
+        for(Var v:lv){
+            output += newLine("mov eax,[esp+" + 4*i + "]") +
+                    newLine("call atoi") + 
+                    newLine("mov [" + v.name() + "], eax");
+            i++;
+        }
+        return output;
     }
     
     public final ArrayList<String> getMainList() {
