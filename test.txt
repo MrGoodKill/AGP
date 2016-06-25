@@ -1,5 +1,5 @@
 main(a){
-	print("L'entree est :");
+	print("L'entree a est :");
 	print(a);
 	var b;
 	b:=1+sum(a*a,2*a);
@@ -9,6 +9,5 @@ main(a){
 }
 
 sum(a,b){
-	var c := a+b;
-	return c;
+	return a+b;
 }

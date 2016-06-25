@@ -61,7 +61,7 @@ inst returns[Inst instruct]:
 		{$instruct = new Inst($ca.call);};
 
 return2 returns[Return2 ret]:
-	'return 'v=WORD {$ret = new Return2(new Var($v.getText()));};
+	'return 'o=operation {$ret = new Return2($o.op);};
 
 callFunction returns[CallFunction call]:
 	v=WORD'('lo=listop')'

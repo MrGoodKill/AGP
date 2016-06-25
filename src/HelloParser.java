@@ -713,8 +713,10 @@ public class HelloParser extends Parser {
 
 	public static class Return2Context extends ParserRuleContext {
 		public Return2 ret;
-		public Token v;
-		public TerminalNode WORD() { return getToken(HelloParser.WORD, 0); }
+		public OperationContext o;
+		public OperationContext operation() {
+			return getRuleContext(OperationContext.class,0);
+		}
 		public Return2Context(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -738,8 +740,8 @@ public class HelloParser extends Parser {
 			setState(151);
 			match(T__7);
 			setState(152);
-			((Return2Context)_localctx).v = match(WORD);
-			((Return2Context)_localctx).ret =  new Return2(new Var(((Return2Context)_localctx).v.getText()));
+			((Return2Context)_localctx).o = operation();
+			((Return2Context)_localctx).ret =  new Return2(((Return2Context)_localctx).o.op);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1914,11 +1916,11 @@ public class HelloParser extends Parser {
 		"\t\2\2\u0095\u0096\b\t\1\2\u0096\u0098\3\2\2\2\u0097r\3\2\2\2\u0097v\3"+
 		"\2\2\2\u0097z\3\2\2\2\u0097~\3\2\2\2\u0097\u0081\3\2\2\2\u0097\u0084\3"+
 		"\2\2\2\u0097\u0087\3\2\2\2\u0097\u008b\3\2\2\2\u0097\u008f\3\2\2\2\u0097"+
-		"\u0093\3\2\2\2\u0098\21\3\2\2\2\u0099\u009a\7\n\2\2\u009a\u009b\7&\2\2"+
-		"\u009b\u009c\b\n\1\2\u009c\23\3\2\2\2\u009d\u009e\7&\2\2\u009e\u009f\7"+
-		"\7\2\2\u009f\u00a0\5\f\7\2\u00a0\u00a1\7\13\2\2\u00a1\u00a2\b\13\1\2\u00a2"+
-		"\25\3\2\2\2\u00a3\u00a4\7\f\2\2\u00a4\u00a5\7&\2\2\u00a5\u00a6\7\13\2"+
-		"\2\u00a6\u00ad\b\f\1\2\u00a7\u00a8\7\f\2\2\u00a8\u00a9\5\30\r\2\u00a9"+
+		"\u0093\3\2\2\2\u0098\21\3\2\2\2\u0099\u009a\7\n\2\2\u009a\u009b\5*\26"+
+		"\2\u009b\u009c\b\n\1\2\u009c\23\3\2\2\2\u009d\u009e\7&\2\2\u009e\u009f"+
+		"\7\7\2\2\u009f\u00a0\5\f\7\2\u00a0\u00a1\7\13\2\2\u00a1\u00a2\b\13\1\2"+
+		"\u00a2\25\3\2\2\2\u00a3\u00a4\7\f\2\2\u00a4\u00a5\7&\2\2\u00a5\u00a6\7"+
+		"\13\2\2\u00a6\u00ad\b\f\1\2\u00a7\u00a8\7\f\2\2\u00a8\u00a9\5\30\r\2\u00a9"+
 		"\u00aa\7\13\2\2\u00aa\u00ab\b\f\1\2\u00ab\u00ad\3\2\2\2\u00ac\u00a3\3"+
 		"\2\2\2\u00ac\u00a7\3\2\2\2\u00ad\27\3\2\2\2\u00ae\u00af\7)\2\2\u00af\u00b0"+
 		"\b\r\1\2\u00b0\31\3\2\2\2\u00b1\u00b2\7\r\2\2\u00b2\u00b3\7&\2\2\u00b3"+
