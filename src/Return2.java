@@ -9,7 +9,7 @@ public class Return2 extends Node{
 	
 	public String toASM(){
 		String output = ""
-		+ newLine("mov eax,[" + var.name() + "]")
+		+ newLine("mov eax,[" + var.getName() + "]")
 		+ newLine("push eax")
 		+ newLine("mov eax,[funcReturn]")
 		+ newLine("push eax")

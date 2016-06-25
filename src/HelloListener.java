@@ -57,6 +57,16 @@ public interface HelloListener extends ParseTreeListener {
 	 */
 	void exitListvar(HelloParser.ListvarContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link HelloParser#listop}.
+	 * @param ctx the parse tree
+	 */
+	void enterListop(HelloParser.ListopContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HelloParser#listop}.
+	 * @param ctx the parse tree
+	 */
+	void exitListop(HelloParser.ListopContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link HelloParser#bloc}.
 	 * @param ctx the parse tree
 	 */
