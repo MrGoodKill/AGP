@@ -1,20 +1,19 @@
 
 public class CallFunction extends Node {
 	private String name;
-	private ListVar listvar;
+	private ListOp listop;
 	
-	public CallFunction(Var name, ListVar listvar){
-		this.name = name.name();
-		this.listvar = listvar;
+	public CallFunction(Var name, ListOp listop){
+		this.name = name.getNameWithoutHeader();
+		this.listop = listop;
 	}
 	
 	@Override
 	public String toASM(){
 		String output = "";
-		if(listvar!=null) {
-			for(Var v:listvar){
-		        output += 	newLine("mov eax," + "[" + v.name() + "]") + 
-		        			newLine("push eax");
+		if(listop!=null) {
+			for(Op op:listop){
+		        output += 	op.toASM();
 		    }
 		}
 		output += newLine("call " + name);

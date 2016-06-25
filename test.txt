@@ -1,11 +1,13 @@
 main(a){
-	if(a=3){
-		if(a=1){
-			a:=5;
-		}
-		a:=0;
-	}
-	else{
-	}
-/* hello guys */
+	print("L'entree a est :");
+	print(a);
+	var b;
+	b:=1+sum(a*a,2*a);
+	print("On calcule (1+a²)");
+	print("Resultat :");
+	print(b);
+}
+
+sum(a,b){
+	return a+b;
 }

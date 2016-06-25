@@ -25,6 +25,12 @@ listvar returns[ListVar lv]:
 		{$lv = new ListVar(new Var($v.getText()));}
 	| v=WORD','l=listvar
 		{$lv = new ListVar(new Var($v.getText()),$l.lv);};
+		
+listop returns[ListOp lo]:
+	o=operation
+		{$lo = new ListOp($o.op);}
+	| o=operation','l=listop
+		{$lo = new ListOp($o.op,$l.lo);};
 
 bloc returns[Bloc bc]:
 	i=inst b=bloc
@@ -55,11 +61,11 @@ inst returns[Inst instruct]:
 		{$instruct = new Inst($ca.call);};
 
 return2 returns[Return2 ret]:
-	'return 'v=WORD {$ret = new Return2(new Var($v.getText()));};
+	'return 'o=operation {$ret = new Return2($o.op);};
 
 callFunction returns[CallFunction call]:
-	v=WORD'('l=listvar')'
-		{$call = new CallFunction(new Var($v.getText()),$l.lv);};
+	v=WORD'('lo=listop')'
+		{$call = new CallFunction(new Var($v.getText()),$lo.lo);};
 
 print returns[Print p]:
 	'print('v=WORD')'

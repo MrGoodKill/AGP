@@ -1,16 +1,15 @@
 
 public class Return2 extends Node{
 	
-	private Var var;
+	private Op op;
 	
-	public Return2(Var var){
-		this.var = var;
+	public Return2(Op op){
+		this.op = op;
 	}
 	
 	public String toASM(){
 		String output = ""
-		+ newLine("mov eax,[" + var.name() + "]")
-		+ newLine("push eax")
+		+ op.toASM()
 		+ newLine("mov eax,[funcReturn]")
 		+ newLine("push eax")
 		+ newLine("ret");
