@@ -15,7 +15,7 @@ public class Decl extends Node {
     public String toASMData() {
         String output="";
         for(Var v:listVar){
-            output=output+newLabel("")+v.name()+ ":\tdd\t0";
+            output=output+newLabel("")+v.getName()+ ":\tdd\t0";
         }
         return output;
     }
