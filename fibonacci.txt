@@ -1,0 +1,18 @@
+fibonacci(n){
+	var s;
+	s:=n;
+	if(s<=1){ 
+		return s;
+	}
+	else{
+		var a:= fibonacci(n-1);
+		var b:= fibonacci(n-2);
+		var c:= a + b;
+        	return c;
+	}
+}
+main(n){
+	var a;
+	a:=fibonacci(n);
+	print(a);
+}
