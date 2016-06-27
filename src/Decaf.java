@@ -8,7 +8,7 @@ public class Decaf extends Node {
 
     @Override
     public String toASMData() {
-        String output = newLabel("") + affct.getVar().name() + ":\tdd\t0";
+        String output = newLabel("") + affct.getVar().getName() + ":\tdd\t0";
         return output;
     }
 

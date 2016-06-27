@@ -13,6 +13,7 @@ public class Root extends Node{
                 newLabel("section .data") +
                 newLabel("print:\tdb \"%d\", 10, 0") +
                 newLabel("printstr:\tdb \"%s\", 10, 0") +
+                newLabel("funcReturn:\tdd\t0") +
                 getGlobalData()+
                 p.toASMData() +
                     newLabel("") + newLabel("") +

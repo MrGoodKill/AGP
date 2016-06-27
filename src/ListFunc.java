@@ -22,6 +22,7 @@ public class ListFunc extends Node{
 	public String toASM(){
 		String output = "";
 		if(!isEmpty()){
+            setGlobalFctName(function.getFctName());
 	        output=function.toASM();
 	        if(listFunc!=null) output=output+listFunc.toASM();
 		}
@@ -31,6 +32,7 @@ public class ListFunc extends Node{
 	public String toASMData(){
 		String output = "";
 		if(!isEmpty()){
+            setGlobalFctName(function.getFctName());
 			output=function.toASMData();
 			if(listFunc!=null) output=output+listFunc.toASMData();
 		}

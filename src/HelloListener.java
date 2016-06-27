@@ -57,6 +57,16 @@ public interface HelloListener extends ParseTreeListener {
 	 */
 	void exitListvar(HelloParser.ListvarContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link HelloParser#listop}.
+	 * @param ctx the parse tree
+	 */
+	void enterListop(HelloParser.ListopContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HelloParser#listop}.
+	 * @param ctx the parse tree
+	 */
+	void exitListop(HelloParser.ListopContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link HelloParser#bloc}.
 	 * @param ctx the parse tree
 	 */
@@ -76,6 +86,26 @@ public interface HelloListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitInst(HelloParser.InstContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HelloParser#return2}.
+	 * @param ctx the parse tree
+	 */
+	void enterReturn2(HelloParser.Return2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link HelloParser#return2}.
+	 * @param ctx the parse tree
+	 */
+	void exitReturn2(HelloParser.Return2Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link HelloParser#callFunction}.
+	 * @param ctx the parse tree
+	 */
+	void enterCallFunction(HelloParser.CallFunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HelloParser#callFunction}.
+	 * @param ctx the parse tree
+	 */
+	void exitCallFunction(HelloParser.CallFunctionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link HelloParser#print}.
 	 * @param ctx the parse tree

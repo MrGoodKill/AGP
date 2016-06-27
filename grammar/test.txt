@@ -1,8 +1,11 @@
-functi(c,b){
-	print(c);
-}
-
 main(a){
+
+	var b;
+	b:=func(a);
+	print(b);
+
+	func(a);
+
 	if(a=3){
 		if(a=1){
 			a:=5;
@@ -13,8 +16,12 @@ main(a){
 	}
 /* hello guys */
 	print(a);
+	a:= a + 1;
+	a:=func(a);
 }
 
-func(c,b){
+func(c){
 	print(c);
+	c:= c + 2;
+	return c;
 }
