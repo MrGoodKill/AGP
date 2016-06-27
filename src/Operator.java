@@ -2,7 +2,7 @@
 public class Operator extends Node{
 	
 	public enum Op{
-		ADD,SUB,MULT,DIV,EQU,SOE,SUP,INF,IOE;
+		ADD,SUB,MULT,DIV,EQU,SOE,SUP,INF,IOE,AND,OR;
 	}
 	
 	private Op op;
@@ -40,6 +40,12 @@ public class Operator extends Node{
 		case "<=":
 			this.op = Op.IOE;
 			break;
+        case "et":
+            this.op = Op.AND;
+            break;
+        case "ou":
+            this.op = Op.OR;
+            break;
 		}
 	}
 
@@ -75,4 +81,20 @@ public class Operator extends Node{
         }
     }
 
+    public String toASMNEG(String label){
+        switch(op) {
+            case EQU:
+                return newLine("je " + label);
+            case INF:
+                return newLine("jnge " + label);
+            case IOE:
+                return newLine("jng " + label);
+            case SOE:
+                return newLine("jnl " + label);
+            case SUP:
+                return newLine("jnle " + label);
+            default:
+                return newLine("asm failed for operator");
+        }
+    }
 }

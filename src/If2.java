@@ -1,19 +1,19 @@
 public class If2 extends Node {
 
-    private Cond cond;
+    private ListCond lcond;
     private Bloc bloc;
     private Bloc bloc2;
     private int compt = -1;
 
-    public If2(Cond cond, Bloc bloc){
-        this.cond = cond;
+    public If2(ListCond lcond, Bloc bloc){
+        this.lcond = lcond;
         this.bloc = bloc;
         this.compt = condCpt;
         condCpt++;
     }
 
-    public If2(Cond cond, Bloc bloc, Bloc bloc2){
-        this.cond = cond;
+    public If2(ListCond lcond, Bloc bloc, Bloc bloc2){
+        this.lcond = lcond;
         this.bloc = bloc;
         this.bloc2 = bloc2;
         this.compt = condCpt;
@@ -21,7 +21,7 @@ public class If2 extends Node {
     }
     
     public String toASM() {
-        String output= cond.toASM(compt);
+        String output=lcond.toASM(compt);
         output=output+bloc.toASM();
         if (bloc2!=null){
         	output+= newLine("jmp endelse"+compt);
@@ -36,9 +36,9 @@ public class If2 extends Node {
 
     @Override
     public String toASMData() {
-        String asmData = cond.toASMData()+bloc.toASMData();
+        String asmData = lcond.toASMData()+bloc.toASMData();
         if (bloc2!=null){
-        	asmData+= cond.toASMData()+bloc2.toASMData();
+        	asmData+= lcond.toASMData()+bloc2.toASMData();
         }
         return asmData;
     }

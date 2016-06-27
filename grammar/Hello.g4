@@ -59,9 +59,14 @@ inst returns[Inst instruct]:
 		{$instruct = new Inst($re.ret);}
 	| ca=callFunction';'
 		{$instruct = new Inst($ca.call);};
+//	| w=wait2';'
+//		{$instruct = new Inst($w.wa);};
 
 return2 returns[Return2 ret]:
 	'return 'o=operation {$ret = new Return2($o.op);};
+	
+//wait2 returns[Wait2 wa]:
+//	'wait 'o=operation {$wa = new Return2($o.op);};
 
 callFunction returns[CallFunction call]:
 	v=WORD'('lo=listop')'
@@ -98,12 +103,12 @@ declaffct returns[Decaf decaf]:
 		{$decaf = new Decaf($a.aff);};
 		
 //if2 returns[If2 i]:
-//	'if('c=cond'){'b=bloc'}'
-//		{$i = new If2($c.c,$b.bc);};
+//	'if('lc=condlist'){'b=bloc'}'
+//		{$i = new If2($lc.lc,$b.bc);};
 
 if2 returns[If2 i]: 
-    'if('c=cond'){'b=bloc'}''else{'b2=bloc'}' {$i = new If2($c.c,$b.bc,$b2.bc);}
-    | 'if('c=cond'){'b=bloc'}'{$i = new If2($c.c,$b.bc);};
+    'if('lc=condlist'){'b=bloc'}''else{'b2=bloc'}' {$i = new If2($lc.lc,$b.bc,$b2.bc);}
+    | 'if('lc=condlist'){'b=bloc'}'{$i = new If2($lc.lc,$b.bc);};
 
     
 //else2 returns [Else2 e]:
@@ -111,15 +116,24 @@ if2 returns[If2 i]:
 
 
 while2 returns[While2 w]:
-	'while('c=cond'){'b=bloc'}'
-		{$w = new While2($c.c,$b.bc);};
+	'while('lc=condlist'){'b=bloc'}'
+		{$w = new While2($lc.lc,$b.bc);};
 
 cond returns[Cond c]:
-	op1=operation'='op2=operation {$c = new Cond($op1.op,$op2.op,"=");}
+	'('lc=condlist')' {$c = new Cond($lc.lc);}
+	| op1=operation'='op2=operation {$c = new Cond($op1.op,$op2.op,"=");}
 	| op1=operation'>'op2=operation {$c = new Cond($op1.op,$op2.op,">");}
 	| op1=operation'<'op2=operation {$c = new Cond($op1.op,$op2.op,"<");}
 	| op1=operation'<='op2=operation {$c = new Cond($op1.op,$op2.op,"<=");}
 	| op1=operation'>='op2=operation {$c = new Cond($op1.op,$op2.op,">=");};
+
+condlist returns[ListCond lc]:
+	c=cond 'et' l=condlist
+		{$lc = new ListCond($c.c,$l.lc,"et");}
+	| c=cond 'ou' l=condlist
+		{$lc = new ListCond($c.c,$l.lc,"ou");}
+	| c=cond
+		{$lc = new ListCond($c.c);};
 
 operation returns [Op op] :
     f1=factor'+'op2=operation {$op=new Op($f1.f,$op2.op,"+");}
