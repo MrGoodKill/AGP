@@ -11,6 +11,7 @@ fibonacci$n:	dd	0
 fibonacci$s:	dd	0
 fibonacci$a:	dd	0
 fibonacci$b:	dd	0
+fibonacci$d:	dd	0
 fibonacci$c:	dd	0
 
 
@@ -33,41 +34,46 @@ fibonacci:
 	push 1			;[Final2]
 	pop ebx			;[Cond]
 	cmp eax,ebx			;[Cond]
-	jg cond1			;[Operator]
+	jg cond2			;[Operator]
 	push dword[fibonacci$s]			;[Final2]
 	mov eax,[funcReturn]			;[Return2]
 	push eax			;[Return2]
 	ret			;[Return2]
-	jmp endelse1			;[If2]
-cond1:
-	
-	push 1			;[Final2]
-	mov eax,[fibonacci$n]			;[Final2]
-	pop ebx			;[Op]
-	sub eax,ebx			;[Operator]
-	push eax			;[Op]
-	call fibonacci			;[CallFunction]
-	pop eax			;[Number]			;[Final2]
+	jmp endelse2			;[If2]
+cond2:
+	mov eax,0			;[Final2]
 	mov [fibonacci$a],eax			;[Affct]
-	
-	push 2			;[Final2]
-	mov eax,[fibonacci$n]			;[Final2]
-	pop ebx			;[Op]
-	sub eax,ebx			;[Operator]
-	push eax			;[Op]
-	call fibonacci			;[CallFunction]
-	pop eax			;[Number]			;[Final2]
+	mov eax,1			;[Final2]
 	mov [fibonacci$b],eax			;[Affct]
+	mov eax,2			;[Final2]
+	mov [fibonacci$d],eax			;[Affct]
+while1:
+	mov eax,[fibonacci$d]			;[Final2]
+	push dword[fibonacci$s]			;[Final2]
+	pop ebx			;[Cond]
+	cmp eax,ebx			;[Cond]
+	jg cond1			;[Operator]
 	push dword[fibonacci$b]			;[Final2]
 	mov eax,[fibonacci$a]			;[Final2]
 	pop ebx			;[Op]
 	add eax,ebx			;[Operator]
 	mov [fibonacci$c],eax			;[Affct]
+	mov eax,[fibonacci$b]			;[Final2]
+	mov [fibonacci$a],eax			;[Affct]
+	mov eax,[fibonacci$c]			;[Final2]
+	mov [fibonacci$b],eax			;[Affct]
+	push 1			;[Final2]
+	mov eax,[fibonacci$d]			;[Final2]
+	pop ebx			;[Op]
+	add eax,ebx			;[Operator]
+	mov [fibonacci$d],eax			;[Affct]
+	jmp while1			;[While2]
+cond1:
 	push dword[fibonacci$c]			;[Final2]
 	mov eax,[funcReturn]			;[Return2]
 	push eax			;[Return2]
 	ret			;[Return2]
-endelse1:
+endelse2:
 	mov eax,[funcReturn]			;[Func]
 main:
 	mov eax,[esp+8]			;[Prog]
