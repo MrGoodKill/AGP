@@ -4,7 +4,7 @@ public class CallFunction extends Node {
 	private ListVar listvar;
 	
 	public CallFunction(Var name, ListVar listvar){
-		this.name = name.name();
+		this.name = name.getName();
 		this.listvar = listvar;
 	}
 	
@@ -13,7 +13,7 @@ public class CallFunction extends Node {
 		String output = "";
 		if(listvar!=null) {
 			for(Var v:listvar){
-		        output += 	newLine("mov eax," + "[" + v.name() + "]") + 
+		        output += 	newLine("mov eax," + "[" + v.getName() + "]") + 
 		        			newLine("push eax");
 		    }
 		}
