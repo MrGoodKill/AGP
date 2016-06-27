@@ -10,6 +10,7 @@ public class Inst extends Node {
     private Ask ask;
     private CallFunction call;
     private Return2 return2;
+    private Wait2 wait2;
     private InstructionType type;
 
     public Inst(Affct affct){
@@ -62,6 +63,11 @@ public class Inst extends Node {
     	this.call = call;
     	type = InstructionType.Call;
     }
+    
+    public Inst(Wait2 wait2){
+    	this.wait2 = wait2;
+    	type = InstructionType.Wait2;
+    }
 
 
     @Override
@@ -88,6 +94,8 @@ public class Inst extends Node {
             break;
             case Call: output= call.toASM();
             break;
+            case Wait2: output= wait2.toASM();
+            break;
         }
         return output;
     }
@@ -113,6 +121,8 @@ public class Inst extends Node {
             case Return2: output= return2.toASMData();
             break;
             case Call: output= call.toASMData();
+            break;
+            case Wait2: output= wait2.toASMData();
             break;
         }
         return output;
