@@ -1,14 +1,21 @@
 fibonacci(n){
 	var s;
 	s:=n;
-	if(s<=1){ 
+	if(s<=1){
 		return s;
 	}
 	else{
-		var a:= fibonacci(n-1);
-		var b:= fibonacci(n-2);
-		var c:= a + b;
-        	return c;
+		var a:=0;
+		var b:=1;
+		var d:=2;
+		var c;
+		while(d<=s){
+			c:= a + b;
+			a:=b;
+			b:=c;
+			d:=d+1;
+		}
+       	return c;
 	}
 }
 main(n){
