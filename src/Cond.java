@@ -18,9 +18,8 @@ public class Cond extends Node {
     public String toASM(int compt){
     	String output;
         if(lc==null) {
-            output =
-                    op1.toASMInEAX() +
-                            op2.toASM() +
+            output = op2.toASM() +
+                            op1.toASMInEAX() +
                             newLine("pop ebx") +
                             newLine("cmp eax,ebx");
 
@@ -29,19 +28,16 @@ public class Cond extends Node {
         } else {
             output = lc.toASM(compt);
         }
-
 		return output;
     }
 
     public String toASMOR(String label){
         String output;
         if(lc==null){
-            output =
-                    op1.toASMInEAX() +
-                            op2.toASM() +
+            output = op2.toASM() +
+                            op1.toASMInEAX() +
                             newLine("pop ebx") +
                             newLine("cmp eax,ebx");
-
             // We jump when the conditions aren't true
             output += operator.toASMNEG(label);
         } else {
@@ -53,5 +49,4 @@ public class Cond extends Node {
     public String toASM(){
         return toASM(-1);
     }
-
 }

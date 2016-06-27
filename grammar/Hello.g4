@@ -51,6 +51,8 @@ inst returns[Inst instruct]:
 		{$instruct = new Inst($i.i);}
     | w=while2
 		{$instruct = new Inst($w.w);}
+	| f=for2
+		{$instruct = new Inst($f.f);}
 	| as=ask';'
 		{$instruct = new Inst($as.a);}
 	| p=print';'
@@ -118,6 +120,10 @@ if2 returns[If2 i]:
 while2 returns[While2 w]:
 	'while('lc=condlist'){'b=bloc'}'
 		{$w = new While2($lc.lc,$b.bc);};
+
+for2 returns[For2 f]:
+	'for('a=declaffct';'a2=affct';'c=condlist'){'b=bloc'}'
+		{$f = new For2($a.decaf,$a2.aff,$c.lc,$b.bc);};
 
 cond returns[Cond c]:
 	'('lc=condlist')' {$c = new Cond($lc.lc);}

@@ -13,9 +13,8 @@ public class While2 extends Node {
     
    public String toASM(){
     	String output =	newLabel("while"+compt+":") +
-    					//TODO
-                // c.toASM(compt) +
-    					b.toASM() +  					
+                        c.toASM(compt) +
+    					b.toASM() +
     					newLine("jmp while"+compt) +
     					newLabel("cond"+compt+":");
 		return output;

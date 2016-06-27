@@ -10,6 +10,7 @@ public class Inst extends Node {
     private Ask ask;
     private CallFunction call;
     private Return2 return2;
+    private For2 for2;
     private InstructionType type;
 
     public Inst(Affct affct){
@@ -46,7 +47,6 @@ public class Inst extends Node {
         this.print = print;
         type = InstructionType.Print;
     }
-    
 
     public Inst(Ask ask){
         this.ask = ask;
@@ -61,6 +61,11 @@ public class Inst extends Node {
     public Inst(CallFunction call){
     	this.call = call;
     	type = InstructionType.Call;
+    }
+
+    public Inst(For2 for2){
+        this.for2 = for2;
+        type = InstructionType.For2;
     }
 
 
@@ -85,9 +90,11 @@ public class Inst extends Node {
             case Ask: output= ask.toASM();
                 break;
             case Return2: output= return2.toASM();
-            break;
-            case Call: output= call.toASM();
-            break;
+                break;
+            case For2: output= for2.toASM();
+                break;
+            case Call: output= call.toASM()+newLine("pop eax");
+                break;
         }
         return output;
     }
@@ -111,9 +118,11 @@ public class Inst extends Node {
             case Ask: output= ask.toASMData();
                 break;
             case Return2: output= return2.toASMData();
-            break;
+                break;
+            case For2: output= for2.toASMData();
+                break;
             case Call: output= call.toASMData();
-            break;
+                break;
         }
         return output;
     }

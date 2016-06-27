@@ -1,9 +1,57 @@
-﻿main(){
-	var a:=5;
-	var b:=7;
-	var c:=8;
-	if((a=5 ou b=1) et c=2){
-		print("Prout");
-	}
+main(){
+	print("Bienvenue dans ce jeu\n");
+	tour(14,5);
+}
 
+affichage(NbSlot,NbBaton){
+	print("\n\n\n");
+	for(var h:=1;h:=h+1;h<=5){
+		print("     ░░");
+		for(var empty:=1;empty:=empty+1;empty<=NbSlot-NbBaton){
+			if(h=1 ou h=5){
+				print("░░");
+			}else{
+				print("▒░");
+			}
+		}
+		for(var full:=NbSlot-NbBaton+1;full:=full+1;full<=NbSlot){
+			if(h=1 ou h=5){
+				print("░░");
+			}else{
+				print("█░");
+			}
+		}
+		print("░\n");
+	}
+	print("\n\n");
+	return 0;
+}
+
+tour(NbSlot,NbBaton){
+	var retire;
+	retire:=9999;
+	while(NbBaton-retire<0 ou retire<=0 ou retire>3){
+		affichage(NbSlot,NbBaton);
+		print("Combien de batons voulez-vous retirer ?\n");
+		ask(retire);
+	}
+	NbBaton:=NbBaton-retire;
+	affichage(NbSlot,NbBaton);
+	print("Batons retirés : ");
+	print(retire);
+	win(NbSlot,1);
+	return 0;
+}
+
+win(NbSlot,Joueur){
+	var i := 0;
+	while(0=0){
+		i:=i+1;
+		print("\n\n\n\n\n\n\n\n\n\n\n\n");
+		affichage(NbSlot,i);
+		if(i=NbSlot){
+			i:=0;
+		}
+	}
+	return 0;
 }

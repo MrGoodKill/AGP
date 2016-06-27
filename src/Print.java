@@ -18,11 +18,13 @@ public class Print extends Node{
         if(var!=null) {
             output = newLine("push dword [" + var.getName() + "]") +
                     newLine("push dword print") +
-                    newLine("call printf");
+                    newLine("call printf") +
+                    newLine("add esp,8");
         } else {
-            output = newLine("push dword str"+ string.getIndex()) +
+            output = newLine("push dword str"+string.getIndex()) +
                     newLine("push dword printstr") +
-                    newLine("call printf");
+                    newLine("call printf")+
+                    newLine("add esp,8");
         }
         return output;
     }

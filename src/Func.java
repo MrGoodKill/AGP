@@ -22,8 +22,7 @@ public class Func extends Node{
 		output= output
 				+ newLabel(name + ":")
 				+ toASMPopFunc()
-				+ bloc.toASM()
-				+ newLine("mov eax,[funcReturn]");
+				+ bloc.toASM();
 		return output;
 	}
 	
@@ -48,6 +47,7 @@ public class Func extends Node{
     		+ newLine("pop eax")
     		+ newLine("mov [" + paramList.get(i).getName() +"],eax");
     	}
+		output+=newLine("push dword [funcReturn]");
     	return output;
     }
 }
