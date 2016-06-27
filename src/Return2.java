@@ -1,4 +1,3 @@
-
 public class Return2 extends Node{
 	
 	private Op op;
@@ -9,7 +8,8 @@ public class Return2 extends Node{
 	
 	public String toASM(){
 		String output = ""
-		+ op.toASM()
+		+ newLine("mov eax,[" + var.getName() + "]")
+		+ newLine("push eax")
 		+ newLine("mov eax,[funcReturn]")
 		+ newLine("push eax")
 		+ newLine("ret");
