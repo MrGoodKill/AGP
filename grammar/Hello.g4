@@ -60,15 +60,15 @@ inst returns[Inst instruct]:
 	| re=return2';'
 		{$instruct = new Inst($re.ret);}
 	| ca=callFunction';'
-		{$instruct = new Inst($ca.call);};
-//	| w=wait2';'
-//		{$instruct = new Inst($w.wa);};
+		{$instruct = new Inst($ca.call);}
+	| wa=wait2';'
+		{$instruct = new Inst($wa.wa);};
+
+wait2 returns[Wait2 wa]:
+	'wait('o=operation')' {$wa = new Wait2($o.op);};
 
 return2 returns[Return2 ret]:
 	'return 'o=operation {$ret = new Return2($o.op);};
-	
-//wait2 returns[Wait2 wa]:
-//	'wait 'o=operation {$wa = new Return2($o.op);};
 
 callFunction returns[CallFunction call]:
 	v=WORD'('lo=listop')'

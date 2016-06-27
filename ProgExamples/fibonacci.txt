@@ -1,0 +1,25 @@
+fibonacci(n){
+	var s;
+	s:=n;
+	if(s<=1){
+		return s;
+	}
+	else{
+		var a:=0;
+		var b:=1;
+		var d:=2;
+		var c;
+		while(d<=s){
+			c:= a + b;
+			a:=b;
+			b:=c;
+			d:=d+1;
+		}
+       	return c;
+	}
+}
+main(n){
+	var a;
+	a:=fibonacci(n);
+	print(a);
+}

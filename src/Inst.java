@@ -11,6 +11,7 @@ public class Inst extends Node {
     private CallFunction call;
     private Return2 return2;
     private For2 for2;
+    private Wait2 wait2;
     private InstructionType type;
 
     public Inst(Affct affct){
@@ -62,6 +63,11 @@ public class Inst extends Node {
     	this.call = call;
     	type = InstructionType.Call;
     }
+    
+    public Inst(Wait2 wait2){
+    	this.wait2 = wait2;
+    	type = InstructionType.Wait2;
+    }
 
     public Inst(For2 for2){
         this.for2 = for2;
@@ -95,6 +101,8 @@ public class Inst extends Node {
                 break;
             case Call: output= call.toASM()+newLine("pop eax");
                 break;
+            case Wait2: output= wait2.toASM();
+            	break;
         }
         return output;
     }
@@ -122,7 +130,9 @@ public class Inst extends Node {
             case For2: output= for2.toASMData();
                 break;
             case Call: output= call.toASMData();
-                break;
+            	break;
+            case Wait2: output= wait2.toASMData();
+            	break;
         }
         return output;
     }
