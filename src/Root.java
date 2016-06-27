@@ -22,7 +22,8 @@ public class Root extends Node{
                     newLabel("") + newLabel("") +
                 newLabel("section .text") +
                 p.toASM() +
-                addAtoi();           
+                addAtoi() +
+        		getGlobalASM();
         return output;
 
     }
@@ -30,6 +31,7 @@ public class Root extends Node{
     public String addAtoi(){
     	String output;
     	output = 
+    			newLine("") +
     			newLabel("atoi:") +
     			newLine("push ebx") +
     			newLine("push ecx") +
@@ -55,5 +57,5 @@ public class Root extends Node{
 				newLine("ret");
     	return output;
     }
-
+    
 }

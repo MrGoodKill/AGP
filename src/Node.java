@@ -3,6 +3,7 @@ public class Node {
     protected static int condCpt=1;
     protected static int stringIndex=1;
     protected static String globalData="";
+    protected static String globalASM="";
     private static String fctName="main";
 
     public String toASM(){
@@ -17,6 +18,10 @@ public class Node {
         return newLabel("")+"temp:\tdd\t0"+globalData;
     }
 
+    public String getGlobalASM(){
+    	return globalASM;
+    }
+    
     public String getGlobalFctName(){return fctName;}
 
     public void setGlobalFctName(String fctName){Node.fctName=fctName;}

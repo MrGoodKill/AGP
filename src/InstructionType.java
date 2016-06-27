@@ -8,7 +8,8 @@ public enum InstructionType {
     Ask,
 	Print,
 	Return2,
-	Call;
+	Call,
+	Wait2;
 
     public boolean isAffct(){
         return this.equals(Affct);
@@ -39,5 +40,8 @@ public enum InstructionType {
     }
     public boolean isCall(){
         return this.equals(Call);
+    }
+    public boolean isWait2(){
+        return this.equals(Wait2);
     }
 }
