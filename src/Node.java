@@ -6,6 +6,7 @@ public class Node {
     protected static String globalASM="";
     private static String fctName="main";
 
+    // Si la fonction n'est pas définie dans les classes filles, celle-ci sera appelée
     public String toASM(){
         return "\n[Node sans ASM : "+getClass().getName()+"]";
     }
@@ -14,6 +15,7 @@ public class Node {
         return "";
     }
 
+    // 
     public String getGlobalData(){
         return newLabel("")+"temp:\tdd\t0"+globalData;
     }
@@ -26,6 +28,7 @@ public class Node {
 
     public void setGlobalFctName(String fctName){Node.fctName=fctName;}
     
+    // Fonction d'indentation
     public String newLine(String line){
     	
     	String output;
@@ -37,6 +40,7 @@ public class Node {
     	return output;
     }
     
+    // Fonction d'indentation
     public String newLabel(String label){
     	
     	String output;

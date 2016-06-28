@@ -14,13 +14,13 @@ public class Cond extends Node {
     	String output;
     	
     	output =
-                op1.toASMInEAX() +
-                op2.toASM() +
-                newLine("pop ebx") +
-        		newLine("cmp eax,ebx");
+                op1.toASMInEAX() +		// On met le résultat de la première opération dans eax
+                op2.toASM() +			// On met le résultat de la 2ème opération dans la pile
+                newLine("pop ebx") +	// On dépile dans ebx
+        		newLine("cmp eax,ebx");	// On compare eax à ebx
     	
     	// We jump when the conditions aren't true
-        output += operator.toASM(compt);
+        output += operator.toASM(compt);// Operator se charge de trouver le jump adéquat (jle, je etc)
 
 		return output;
     }

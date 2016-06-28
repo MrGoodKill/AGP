@@ -22,14 +22,19 @@ public class Main {
         System.out.println(content+"\n\n");
         System.out.println("TRADUCTION :\n");
 
+        // On va chercher le fichier contenant notre code
         HelloLexer lexer = new HelloLexer( new ANTLRFileStream("../grammar/test.txt", "UTF-8"));
         CommonTokenStream tokens = new CommonTokenStream( lexer );
+        // On instancie le parser à partir du résultat donné par le lexer
         HelloParser parser = new HelloParser( tokens );
+        // On instancie notre arbre grace au parser
         Root tree = parser.r().root;
 
+        // On convertit cet arbre en du code assembleur
         String sortie = tree.toASM();
         System.out.println(sortie);
         
+        // Et on écrit ce code dans un fichier
         PrintWriter writer = new PrintWriter("../../Shared/hello.asm", "UTF-8");
         writer.println(sortie);
         writer.close();

@@ -13,7 +13,8 @@ public class Bloc extends Node {
     public Bloc(){
         this.empty=true;
     }
-
+    
+    // Bloc peut être vide, il faut le vérifier si on ne veut pas faire de null pointer exception
     public boolean isEmpty(){
         return empty;
     }
@@ -23,7 +24,7 @@ public class Bloc extends Node {
         String output;
         if(!isEmpty()){
             output=inst.toASM();
-            output=output+bloc.toASM();		//if(bloc!=null) a verifier avant?
+            output=output+bloc.toASM();
         } else output="";
         return output;
     }
@@ -33,7 +34,7 @@ public class Bloc extends Node {
         String output;
         if(!isEmpty()){
             output=inst.toASMData();
-            output=output+bloc.toASMData(); //if(bloc!=null) a verifier avant?
+            output=output+bloc.toASMData();
         } else output="";
         return output;
     }
