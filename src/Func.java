@@ -54,10 +54,10 @@ public class Func extends Node{
 					newLine("push dword ["+paramList.get(i).getName()+"]")+
 					newLine("mov eax, [funcTemp]")+
 					newLine("mov ["+paramList.get(i).getName()+"], eax")+
-					newLine("sub esp,4");
+					newLine("add esp,4");
 			decalage+=4;
 		}
-		output+=newLine("add esp,"+decalage);
+		output+=newLine("sub esp,"+decalage);
 		for(Var v:saveList){
 			output=output +
 					newLine("push dword ["+v.getName()+"]");
