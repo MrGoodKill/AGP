@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class For2 extends Node {
 
     private Decaf decaf;
@@ -5,6 +8,7 @@ public class For2 extends Node {
     private ListCond c;
     private Bloc b;
     private int compt;
+    private ArrayList<Var> declList;
 
     public For2(Decaf decaf, Affct aff, ListCond c, Bloc b) {
         this.c = c;
@@ -31,5 +35,16 @@ public class For2 extends Node {
        String asmData = decaf.toASMData()+c.toASMData()+b.toASMData();
        return asmData;
    }
-    
+
+    public ArrayList<Var> getDeclList() {
+        ArrayList<Var> result = new ArrayList<>();
+        result.add(decaf.getVar());
+        result.addAll(b.getDeclList());
+        return result;
+    }
+
+    public ArrayList<Return2> getReturnList() {
+        ArrayList<Return2> result = b.getReturnList();
+        return result;
+    }
 }

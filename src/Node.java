@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Node {
 	
     protected static int condCpt=1;
@@ -21,11 +23,11 @@ public class Node {
     public String getGlobalASM(){
     	return globalASM;
     }
-    
+
     public String getGlobalFctName(){return fctName;}
 
     public void setGlobalFctName(String fctName){Node.fctName=fctName;}
-    
+
     public String newLine(String line){
     	
     	String output;

@@ -19,4 +19,8 @@ public class Decl extends Node {
         }
         return output;
     }
+
+    public ListVar getListVar() {
+        return listVar;
+    }
 }

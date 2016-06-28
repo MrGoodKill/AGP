@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class If2 extends Node {
 
     private ListCond lcond;
@@ -41,5 +44,18 @@ public class If2 extends Node {
         	asmData+= lcond.toASMData()+bloc2.toASMData();
         }
         return asmData;
+    }
+
+    public ArrayList<Var> getDeclList() {
+        ArrayList<Var> result = new ArrayList<>();
+        result.addAll(bloc.getDeclList());
+        result.addAll(bloc2.getDeclList());
+        return result;
+    }
+
+    public ArrayList<Return2> getReturnList() {
+        ArrayList<Return2> result = bloc.getReturnList();
+        result.addAll(bloc2.getReturnList());
+        return result;
     }
 }

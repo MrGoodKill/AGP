@@ -16,4 +16,8 @@ public class Decaf extends Node {
     public String toASM() {
         return affct.toASM();
     }
+
+    public Var getVar(){
+        return affct.getVar();
+    }
 }

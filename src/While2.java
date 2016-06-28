@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class While2 extends Node {
 
     private ListCond c;
@@ -25,5 +28,14 @@ public class While2 extends Node {
        String asmData = c.toASMData()+b.toASMData();
        return asmData;
    }
-    
+
+    public ArrayList<Var> getDeclList() {
+        ArrayList<Var> result = b.getDeclList();
+        return result;
+    }
+
+    public ArrayList<Return2> getReturnList() {
+        ArrayList<Return2> result = b.getReturnList();
+        return result;
+    }
 }

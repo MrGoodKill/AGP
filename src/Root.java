@@ -14,6 +14,7 @@ public class Root extends Node{
                 newLabel("print:\tdb \"%d\", 10, 0") +
                 newLabel("printstr:\tdb \"%s\",0") +
                 newLabel("funcReturn:\tdd\t0") +
+                newLabel("funcTemp:\tdd\t0") +
                 getGlobalData()+
                 p.toASMData() +
                     newLabel("") + newLabel("") +
