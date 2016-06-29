@@ -71,7 +71,7 @@ public class If2 extends Node {
     //Renvoie les returns utilisés dans l'arbre généré par le noeud
     public ArrayList<Return2> getReturnList() {
         ArrayList<Return2> result = new ArrayList<>();
-        bloc.getReturnList();
+        result.addAll(bloc.getReturnList());
         if(bloc2!=null) result.addAll(bloc2.getReturnList());
         return result;
     }

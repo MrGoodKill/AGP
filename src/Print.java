@@ -29,6 +29,9 @@ public class Print extends Node{
         } 
         // Print d'une chaîne de caractères
         else {
+            // Ici on push l'adresse de la chaine de caractère
+            // puis on précise le formattage qui précise qu'il s'agit d'une chaine de caractère (%s)
+            // Finalement on appelle la fonction externe printf
             output = newLine("push dword str"+string.getIndex()) +
                     newLine("push dword printstr") +
                     newLine("call printf")+

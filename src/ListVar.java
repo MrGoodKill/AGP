@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 
 public class ListVar extends Node implements Iterable<Var>{
 
+    //Une liste de variable est composée d'une variable et d'une liste de variables
     private Var var;
     private ListVar listVar;
 
@@ -28,6 +29,8 @@ public class ListVar extends Node implements Iterable<Var>{
     }
 
 
+    //Ce bloc sert à pouvoir écrire for(Var v:listvar) dans java
+    //
     @Override
     public Iterator<Var> iterator() {
         return new VarIterator(this);
@@ -42,8 +45,6 @@ public class ListVar extends Node implements Iterable<Var>{
     public Spliterator<Var> spliterator() {
         return null;
     }
-
-
     private class VarIterator implements Iterator<Var> {
 
         private ListVar position;
@@ -62,4 +63,5 @@ public class ListVar extends Node implements Iterable<Var>{
             throw new UnsupportedOperationException("Not supported");
         }
     }
+    //Fin du bloc pour l'iteration dans java
 }

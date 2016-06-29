@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 
 public class ListOp extends Node implements Iterable<Op>{
 
+    //Une liste d'opérations est composée d'une opération et d'une liste d'opération
     private Op op;
     private ListOp listOp;
 
@@ -26,6 +27,8 @@ public class ListOp extends Node implements Iterable<Op>{
     }
 
 
+    //Ce bloc sert à pouvoir écrire for(Op op:listOp) dans java
+    //
     @Override
     public Iterator<Op> iterator() {
         return new OpIterator(this);
@@ -40,8 +43,6 @@ public class ListOp extends Node implements Iterable<Op>{
     public Spliterator<Op> spliterator() {
         return null;
     }
-
-
     private class OpIterator implements Iterator<Op> {
 
         private ListOp position;
@@ -60,4 +61,5 @@ public class ListOp extends Node implements Iterable<Op>{
             throw new UnsupportedOperationException("Not supported");
         }
     }
+    //Fin du bloc pour l'iteration dans java
 }
