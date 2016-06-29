@@ -24,12 +24,17 @@ public class For2 extends Node {
     }
     
    public String toASM(){
-    	String output =	decaf.toASM() +
-                        newLabel("for"+compt+":") +
-                        c.toASM(compt) +
+    	String output =	// On commence par écrire les instructions liées à l'affectation
+    					decaf.toASM() +
+                        // On définit ou démarre la boucle for avec un label
+    					newLabel("for"+compt+":") +
+                        // On écrit ici la condition de saut. Si elle est invalidée, on saute après les intructions
+    					c.toASM(compt) +
     					b.toASM() +
                         aff.toASM() +
-    					newLine("jmp for"+compt) +
+    					// On saute a udébut de la boucle inconditionnellement, la condition est testée en haut
+                        newLine("jmp for"+compt) +
+                        // Ici on définit la fin de la boucle
     					newLabel("cond"+compt+":");
 		return output;
     }
@@ -40,13 +45,15 @@ public class For2 extends Node {
        return asmData;
    }
 
-    public ArrayList<Var> getDeclList() {
+   // On récupère toutes les déclarations contenues dans bloc 
+   public ArrayList<Var> getDeclList() {
         ArrayList<Var> result = new ArrayList<>();
         result.add(decaf.getVar());
         result.addAll(b.getDeclList());
         return result;
     }
-
+   
+   // On récupère tous les returns du bloc
     public ArrayList<Return2> getReturnList() {
         ArrayList<Return2> result = b.getReturnList();
         return result;
