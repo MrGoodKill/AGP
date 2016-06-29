@@ -1,27 +1,35 @@
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class If2 extends Node {
 
-    private Cond cond;
+    private ListCond lcond;
     private Bloc bloc;
     // Le contenu d'un potentiel else
     private Bloc bloc2;
     // On a besoin d'un compteur pour faire des labels uniques pour chaque instance des if
     private int compt = -1;
-    
-    // COnstructeur pour if simple
-    public If2(Cond cond, Bloc bloc){
-        this.cond = cond;
+
+    // Constructeur pour if simple
+    public If2(ListCond lcond, Bloc bloc){
+        this.lcond = lcond;
         this.bloc = bloc;
         this.compt = condCpt;
         condCpt++;
+        children.add(lcond);
+        children.add(bloc);
     }
-    
+
     // Constructeur pour if avec else
-    public If2(Cond cond, Bloc bloc, Bloc bloc2){
-        this.cond = cond;
+    public If2(ListCond lcond, Bloc bloc, Bloc bloc2){
+        this.lcond = lcond;
         this.bloc = bloc;
         this.bloc2 = bloc2;
         this.compt = condCpt;
         condCpt++;
+        children.add(lcond);
+        children.add(bloc);
+        children.add(bloc2);
     }
     
     public String toASM() {
@@ -45,10 +53,26 @@ public class If2 extends Node {
 
     @Override
     public String toASMData() {
-        String asmData = cond.toASMData()+bloc.toASMData();
+        String asmData = lcond.toASMData()+bloc.toASMData();
         if (bloc2!=null){
-        	asmData+= cond.toASMData()+bloc2.toASMData();
+        	asmData+= lcond.toASMData()+bloc2.toASMData();
         }
         return asmData;
     }
+
+    //Renvoie les variables déclarées dans l'arbre généré par le noeud
+    public ArrayList<Var> getDeclList() {
+        ArrayList<Var> result = new ArrayList<>();
+        result.addAll(bloc.getDeclList());
+        result.addAll(bloc2.getDeclList());
+        return result;
+    }
+
+    //Renvoie les returns utilisés dans l'arbre généré par le noeud
+    public ArrayList<Return2> getReturnList() {
+        ArrayList<Return2> result = bloc.getReturnList();
+        result.addAll(bloc2.getReturnList());
+        return result;
+    }
+
 }

@@ -14,12 +14,19 @@ public class Prog extends Node {
         this.b = b;
         this.listFunc1 = listFunc1;
         this.listFunc2 = listFunc2;
+        children.add(lv);
+        children.add(b);
+        children.add(listFunc1);
+        children.add(listFunc2);
     }
 
     public Prog(Bloc b, ListFunc listFunc1, ListFunc listFunc2) {
         this.b = b;
         this.listFunc1 = listFunc1;
         this.listFunc2 = listFunc2;
+        children.add(b);
+        children.add(listFunc1);
+        children.add(listFunc2);
     }
 
     @Override

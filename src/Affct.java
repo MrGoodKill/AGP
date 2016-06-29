@@ -6,6 +6,8 @@ public class Affct extends Node {
     public Affct(Var var, Op op){
         this.var = var;
         this.op = op;
+        children.add(var);
+        children.add(op);
     }
 
     public Var getVar() {

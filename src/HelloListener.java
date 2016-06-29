@@ -207,6 +207,16 @@ public interface HelloListener extends ParseTreeListener {
 	 */
 	void exitWhile2(HelloParser.While2Context ctx);
 	/**
+	 * Enter a parse tree produced by {@link HelloParser#for2}.
+	 * @param ctx the parse tree
+	 */
+	void enterFor2(HelloParser.For2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link HelloParser#for2}.
+	 * @param ctx the parse tree
+	 */
+	void exitFor2(HelloParser.For2Context ctx);
+	/**
 	 * Enter a parse tree produced by {@link HelloParser#cond}.
 	 * @param ctx the parse tree
 	 */
@@ -216,6 +226,16 @@ public interface HelloListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCond(HelloParser.CondContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link HelloParser#condlist}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondlist(HelloParser.CondlistContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link HelloParser#condlist}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondlist(HelloParser.CondlistContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link HelloParser#operation}.
 	 * @param ctx the parse tree

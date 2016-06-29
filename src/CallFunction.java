@@ -8,6 +8,7 @@ public class CallFunction extends Node {
 	public CallFunction(Var name, ListOp listop){
 		this.name = name.getNameWithoutHeader();
 		this.listop = listop;
+		children.add(listop);
 	}
 	
 	@Override
@@ -27,5 +28,8 @@ public class CallFunction extends Node {
     public String toASMData() {
         return "";
     }
-	
+
+	public Func getFunc() {
+		return getFunction(name);
+	}
 }

@@ -5,6 +5,7 @@ public class Ask extends Node{
 
 	public Ask(Var var){
 		this.var = var;
+            children.add(var);
 	}
 	
 	@Override

@@ -13,4 +13,9 @@ public class Var extends Node {
     public String getNameWithoutHeader(){
         return texte;
     }
+
+    @Override
+    public String toString() {
+        return getGlobalFctName()+"$"+texte;
+    }
 }

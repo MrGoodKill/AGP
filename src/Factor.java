@@ -8,10 +8,13 @@ public class Factor extends Node {
         this.final2 = final2;
         this.factor = factor;
         this.operator = new Operator(operator);
+        children.add(final2);
+        children.add(factor);
     }
 
     public Factor(Final2 final2){
         this.final2 = final2;
+        children.add(final2);
     }
 
     // Un factor peut n'être qu'un nombre et non une opération

@@ -5,10 +5,12 @@ public class Final2 extends Node {
 
     public Final2(Op op){
         this.op = op;
+        children.add(op);
     }
 
     public Final2(Number nb){
         this.nb = nb;
+        children.add(nb);
     }
 
     public String toASM() {

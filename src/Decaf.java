@@ -4,6 +4,7 @@ public class Decaf extends Node {
 
     public Decaf(Affct affct){
         this.affct = affct;
+        children.add(affct);
     }
 
     @Override
@@ -15,5 +16,9 @@ public class Decaf extends Node {
     @Override
     public String toASM() {
         return affct.toASM();
+    }
+
+    public Var getVar(){
+        return affct.getVar();
     }
 }

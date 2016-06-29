@@ -5,6 +5,7 @@ public class Decl extends Node {
 
     public Decl(ListVar listVar){
         this.listVar = listVar;
+        children.add(listVar);
     }
 
     @Override
@@ -20,5 +21,9 @@ public class Decl extends Node {
             output=output+newLabel("")+v.getName()+ ":\tdd\t0";
         }
         return output;
+    }
+
+    public ListVar getListVar() {
+        return listVar;
     }
 }

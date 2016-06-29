@@ -8,6 +8,7 @@ public enum InstructionType {
     Ask,
 	Print,
 	Return2,
+    For2,
 	Call,
 	Wait2;
 
@@ -40,6 +41,9 @@ public enum InstructionType {
     }
     public boolean isCall(){
         return this.equals(Call);
+    }
+    public boolean isFor2(){
+        return this.equals(For2);
     }
     public boolean isWait2(){
         return this.equals(Wait2);

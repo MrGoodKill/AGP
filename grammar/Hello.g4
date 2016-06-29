@@ -51,6 +51,8 @@ inst returns[Inst instruct]:
 		{$instruct = new Inst($i.i);}
     | w=while2
 		{$instruct = new Inst($w.w);}
+	| f=for2
+		{$instruct = new Inst($f.f);}
 	| as=ask';'
 		{$instruct = new Inst($as.a);}
 	| p=print';'
@@ -103,19 +105,32 @@ declaffct returns[Decaf decaf]:
 		{$decaf = new Decaf($a.aff);};
 
 if2 returns[If2 i]: 
-    'if('c=cond'){'b=bloc'}''else{'b2=bloc'}' {$i = new If2($c.c,$b.bc,$b2.bc);}
-    | 'if('c=cond'){'b=bloc'}'{$i = new If2($c.c,$b.bc);};
+    'if('lc=condlist'){'b=bloc'}''else{'b2=bloc'}' {$i = new If2($lc.lc,$b.bc,$b2.bc);}
+    | 'if('lc=condlist'){'b=bloc'}'{$i = new If2($lc.lc,$b.bc);};
 
 while2 returns[While2 w]:
-	'while('c=cond'){'b=bloc'}'
-		{$w = new While2($c.c,$b.bc);};
+	'while('lc=condlist'){'b=bloc'}'
+		{$w = new While2($lc.lc,$b.bc);};
+
+for2 returns[For2 f]:
+	'for('a=declaffct';'a2=affct';'c=condlist'){'b=bloc'}'
+		{$f = new For2($a.decaf,$a2.aff,$c.lc,$b.bc);};
 
 cond returns[Cond c]:
-	op1=operation'='op2=operation {$c = new Cond($op1.op,$op2.op,"=");}
+	'('lc=condlist')' {$c = new Cond($lc.lc);}
+	| op1=operation'='op2=operation {$c = new Cond($op1.op,$op2.op,"=");}
 	| op1=operation'>'op2=operation {$c = new Cond($op1.op,$op2.op,">");}
 	| op1=operation'<'op2=operation {$c = new Cond($op1.op,$op2.op,"<");}
 	| op1=operation'<='op2=operation {$c = new Cond($op1.op,$op2.op,"<=");}
 	| op1=operation'>='op2=operation {$c = new Cond($op1.op,$op2.op,">=");};
+
+condlist returns[ListCond lc]:
+	c=cond 'et' l=condlist
+		{$lc = new ListCond($c.c,$l.lc,"et");}
+	| c=cond 'ou' l=condlist
+		{$lc = new ListCond($c.c,$l.lc,"ou");}
+	| c=cond
+		{$lc = new ListCond($c.c);};
 
 operation returns [Op op] :
     f1=factor'+'op2=operation {$op=new Op($f1.f,$op2.op,"+");}

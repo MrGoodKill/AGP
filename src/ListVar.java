@@ -11,10 +11,13 @@ public class ListVar extends Node implements Iterable<Var>{
     public ListVar(Var var, ListVar listVar){
         this.var = var;
         this.listVar = listVar;
+        children.add(var);
+        children.add(listVar);
     }
 
     public ListVar(Var var){
         this.var = var;
+        children.add(var);
     }
 
     public Var getVar(){return var;};

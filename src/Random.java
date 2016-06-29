@@ -5,6 +5,7 @@ public class Random extends Node{
 
 	public Random(Number nb){
         this.nb=nb;
+        children.add(nb);
     }
 	
 	@Override

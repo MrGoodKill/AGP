@@ -8,10 +8,13 @@ public class Op extends Node {
         this.f1 = f1;
         this.op1 = op1;
         this.operator = new Operator(operator);
+        children.add(f1);
+        children.add(op1);
     }
 
     public Op(Factor f1) {
         this.f1 = f1;
+        children.add(f1);
     }
 
     public boolean isOperation(){

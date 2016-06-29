@@ -17,13 +17,13 @@ public class Main {
 
         System.out.println("FICHIER DE BASE :\n\n");
 
-        String content = new Scanner(new FileInputStream("../grammar/test.txt"), "UTF-8").useDelimiter("\\Z").next();
+        String content = new Scanner(new FileInputStream("test.txt"), "UTF-8").useDelimiter("\\Z").next();
 
         System.out.println(content+"\n\n");
         System.out.println("TRADUCTION :\n");
 
         // On va chercher le fichier contenant notre code
-        HelloLexer lexer = new HelloLexer( new ANTLRFileStream("../grammar/test.txt", "UTF-8"));
+        HelloLexer lexer = new HelloLexer( new ANTLRFileStream("test.txt", "UTF-8"));
         CommonTokenStream tokens = new CommonTokenStream( lexer );
         // On instancie le parser à partir du résultat donné par le lexer
         HelloParser parser = new HelloParser( tokens );
@@ -35,7 +35,7 @@ public class Main {
         System.out.println(sortie);
         
         // Et on écrit ce code dans un fichier
-        PrintWriter writer = new PrintWriter("../../Shared/hello.asm", "UTF-8");
+        PrintWriter writer = new PrintWriter("hello.asm", "UTF-8");
         writer.println(sortie);
         writer.close();
     }

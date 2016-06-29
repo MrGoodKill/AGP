@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Node {
 	
     protected static int condCpt=1;
@@ -5,6 +8,8 @@ public class Node {
     protected static String globalData="";
     protected static String globalASM="";
     private static String fctName="main";
+    protected ArrayList<Node> children = new ArrayList<>();
+    private static HashMap<String,Func> funcName = new HashMap<>();
 
     // Si la fonction n'est pas définie dans les classes filles, celle-ci sera appelée
     public String toASM(){
@@ -23,14 +28,13 @@ public class Node {
     public String getGlobalASM(){
     	return globalASM;
     }
-    
+
     public String getGlobalFctName(){return fctName;}
 
     public void setGlobalFctName(String fctName){Node.fctName=fctName;}
     
     // Fonction d'indentation
     public String newLine(String line){
-    	
     	String output;
     	if(Main.DEBUG){
             output = "\n\t"+line+"\t\t\t;["+getClass().getName()+"]";
@@ -40,12 +44,40 @@ public class Node {
     	return output;
     }
     
-    // Fonction d'indentation
+    // Fonction d'indentation pour les labels
     public String newLabel(String label){
     	
     	String output;
     	output = "\n"+label;
     	return output;
+    }
+
+    //Stockage des functions (objet Func) associées à leur nom
+    public void addFunction(String name,Func function){
+        funcName.put(name,function);
+    }
+
+    //Renvoie la function associée au nom donné en argument
+    public Func getFunction(String name){
+        return funcName.get(name);
+    }
+
+	//Renvoie la liste des enfants, quelque soit leur classe
+    public ArrayList<Node> getChildren(){
+        return children;
+    }
+
+    //Renvoie les functions appelées dans l'arbre généré par le noeud
+    public ArrayList<Func> getChildrenFunctionCall(){
+        ArrayList<Func> result = new ArrayList<>();
+        for(Node n:getChildren()){
+            if(n.getClass()==CallFunction.class){
+                result.add(((CallFunction)n).getFunc());
+            } else {
+                result.addAll(n.getChildrenFunctionCall());
+            }
+        }
+        return result;
     }
     
 }
