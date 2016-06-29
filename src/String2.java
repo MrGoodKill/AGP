@@ -8,6 +8,7 @@ public class String2 extends Node {
     private int compt;
 
     public String2(Txt txt){
+        //Le constructeur détecte les \n et les remplace par des ,10, dans le code ASM
         this.txt = txt;
         index = stringIndex;
         stringIndex++;
@@ -20,6 +21,7 @@ public class String2 extends Node {
             c = text.charAt(i);
             if(old=='\\' && c=='n'){
                 compt++;
+                //Si on rencontre un \n, on remplace
                 result=result.substring(0,result.length()-1)+"\",10,\"";
             } else {
                 result+=c;
@@ -27,6 +29,8 @@ public class String2 extends Node {
             old=c;
         }
         compt++;
+        //Stockage du code ASM à mettre dans la section .data
+        //Stocké dans globalData qui sera mis dans la section par Root
         globalData+=newLabel("")+"str"+index+ ":\tdb \""+result+"\",0";
     }
 

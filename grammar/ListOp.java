@@ -10,6 +10,8 @@ public class ListOp extends Node implements Iterable<Op>{
     public ListOp(Op op, ListOp listOp){
         this.op = op;
         this.listOp = listOp;
+        children.add(op);
+        children.add(listOp);
     }
 
     public ListOp(Op op){
