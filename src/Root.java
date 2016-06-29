@@ -4,16 +4,20 @@ public class Root extends Node{
 
     public Root(Prog p) {
         this.p = p;
+        children.add(p);
     }
 
+    // Ici on écrit les mots clés définissant les différentes parties du programme
     @Override
     public String toASM() {
         String output =
                 newLabel("extern printf,exit") +
                 newLabel("section .data") +
                 newLabel("print:\tdb \"%d\", 10, 0") +
-                newLabel("printstr:\tdb \"%s\", 10, 0") +
+                newLabel("printstr:\tdb \"%s\",0") +
                 newLabel("funcReturn:\tdd\t0") +
+                newLabel("funcTemp:\tdd\t0") +
+                // On écrit les déclarations des variables
                 getGlobalData()+
                 p.toASMData() +
                     newLabel("") + newLabel("") +
@@ -21,9 +25,12 @@ public class Root extends Node{
                 newLabel("sinput: resb 255") +
                     newLabel("") + newLabel("") +
                 newLabel("section .text") +
+                // On écrit le code asm du programme
                 p.toASM() +
+                // On rajoute la fonction atoi pour les print
                 addAtoi() +
-        		getGlobalASM();
+        		// On rajoute potentiellement des fonctions hardcodées comme wait, si besoin seulement
+                getGlobalASM();
         return output;
 
     }

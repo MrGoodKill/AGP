@@ -101,19 +101,10 @@ comment returns[Comment com]:
 declaffct returns[Decaf decaf]:
 	'var 'a=affct
 		{$decaf = new Decaf($a.aff);};
-		
-//if2 returns[If2 i]:
-//	'if('c=cond'){'b=bloc'}'
-//		{$i = new If2($c.c,$b.bc);};
 
 if2 returns[If2 i]: 
     'if('c=cond'){'b=bloc'}''else{'b2=bloc'}' {$i = new If2($c.c,$b.bc,$b2.bc);}
     | 'if('c=cond'){'b=bloc'}'{$i = new If2($c.c,$b.bc);};
-
-    
-//else2 returns [Else2 e]:
-//    'else{'b=bloc'}' {$e = new Else2($b.bc);};
-
 
 while2 returns[While2 w]:
 	'while('c=cond'){'b=bloc'}'

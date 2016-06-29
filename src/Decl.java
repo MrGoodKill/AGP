@@ -1,6 +1,7 @@
 public class Decl extends Node {
 
     private ListVar listVar;
+    // On peut déclarer plusieurs variables à la fois.
 
     public Decl(ListVar listVar){
         this.listVar = listVar;
@@ -14,6 +15,7 @@ public class Decl extends Node {
     @Override
     public String toASMData() {
         String output="";
+        // On déclare toutes les variables contenues dans listvar
         for(Var v:listVar){
             output=output+newLabel("")+v.getName()+ ":\tdd\t0";
         }
