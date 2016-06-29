@@ -17,10 +17,15 @@ public class While2 extends Node {
     }
     
    public String toASM(){
-    	String output =	newLabel("while"+compt+":") +
+    	String output =	// Le label qui définit où démarre la boucle
+    					newLabel("while"+compt+":") +
+    					// On écrit la condition qui fait sauter après les insctructions du while si elle est fausse
                         c.toASM(compt) +
     					b.toASM() +
+    					// Dans tous les cas on revient au début des instructions, là où la condition est évaluée
     					newLine("jmp while"+compt) +
+    					// On définit un autre label juste après la fin du code sur lequel on saute si
+    					// La condition est fausse
     					newLabel("cond"+compt+":");
 		return output;
     }
@@ -30,12 +35,14 @@ public class While2 extends Node {
        String asmData = c.toASMData()+b.toASMData();
        return asmData;
    }
-
+   
+   // Récupère toutes les variables déclarées dans le bloc
     public ArrayList<Var> getDeclList() {
         ArrayList<Var> result = b.getDeclList();
         return result;
     }
-
+    
+    // Récupère tous les return de bloc
     public ArrayList<Return2> getReturnList() {
         ArrayList<Return2> result = b.getReturnList();
         return result;
