@@ -1,17 +1,157 @@
-fibonacci(n){
-    var a,b,c;
-    if(n<=1){ 
-        return n;
-    }
-    else{
-        a:= fibonacci(n-1);
-        b:= fibonacci(n-2);
-        c:= a + b;
-       return c;
-    }
+main(){
+	while(0=0){
+		print("\n\n\n\n\n\n\n\n\n\n\n\n");
+		menu(0);
+	}
 }
-main(n){
-    var a;
-    a:=fibonacci(n);
-    print(a);
+
+affichage(NbSlot,NbBaton){
+	print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	for(var h:=1;h:=h+1;h<=5){
+		print("     ░░");
+		for(var empty:=0;empty:=empty+1;empty<NbSlot-NbBaton){
+			if(h=1 ou h=5){
+				print("░░");
+			}else{
+				print("▒░");
+			}
+		}
+		for(var full:=NbSlot-NbBaton+1;full:=full+1;full<NbSlot-1){
+			if(h=1 ou h=5){
+				print("░░");
+			}else{
+				print("█░");
+			}
+		}
+		print("░\n");
+	}
+	print("\n\n");
+	return 0;
+}
+
+menu(void){
+	print(" ____              __                                   __              \n");
+	print("/\  _`\           /\ \__                               /\ \__           \n");
+	print("\ \ \L\ \     __  \ \ ,_\   ___     ___     ___      __\ \ ,_\   ____   \n");
+	print(" \ \  _ <'  /'__`\ \ \ \/  / __`\ /' _ `\ /' _ `\  /'__`\ \ \/  /',__\  \n");
+	print("  \ \ \L\ \/\ \L\.\_\ \ \_/\ \L\ \/\ \/\ \/\ \/\ \/\  __/\ \ \_/\__, `\ \n");
+	print("   \ \____/\ \__/.\_\\ \__\ \____/\ \_\ \_\ \_\ \_\ \____\\ \__\/\____/ \n");
+	print("    \/___/  \/__/\/_/ \/__/\/___/  \/_/\/_/\/_/\/_/\/____/ \/__/\/___/  \n");
+	print("\n");
+	print("          Un jeu  programmé en AGP !                                    \n");
+	print("                       Ne tirez pas le dernier bâtonnet ou vous perdez !\n\n");
+	var NbSlot:=9999;
+	while(NbSlot<3 ou NbSlot>30){
+		print("Combien de batonnets voulez-vous utiliser ? (entre 4 et 30)\n");
+		print("\n\n\n");
+		ask(NbSlot);
+	}
+	tour(NbSlot,NbSlot);
+	return 0;
+}
+
+tour(NbSlot,NbBaton){
+	var retire;
+	retire:=9999;
+	while(NbBaton-retire<0 ou retire<=0 ou retire>3){
+		affichage(NbSlot,NbBaton);
+		print("A vous de jouer !\n");
+		print("Combien de batons voulez-vous retirer ? (1,2 ou 3)\n");
+		ask(retire);
+	}
+	NbBaton:=retirer(NbSlot,NbBaton,retire);
+	if(NbBaton=0){
+		win(NbSlot,1);
+	}else{
+		ordi(NbSlot,NbBaton,retire);
+	}
+	return 0;
+}
+
+ordi(NbSlot,NbBaton,derniercoup){
+	var NbPoint:=0;
+	for(var delay:=0;delay:=delay+1;delay<4){
+		affichage(NbSlot,NbBaton);
+		NbPoint:=NbPoint+1;
+		if(NbPoint>=4){
+			NbPoint:=0;
+		}
+		print("A l'ordinateur de jouer !\n");
+		print("Il réfléchit");
+		for(var point:=1;point:=point+1;point<=NbPoint){
+			print(".");
+		}
+		print("\n");
+		wait(500000000);
+	}
+	var retire;
+	if(NbBaton<=4 et NbBaton>1){
+		retire:=NbBaton-1;
+	}else{
+		if(NbBaton=1){
+			retire:=1;
+		}else{
+			var mem := NbBaton+derniercoup;
+			while(mem > 1){
+				mem:=mem-4;
+			}
+			if(mem=1){
+				retire:=4-derniercoup;
+			}else{
+				retire:=1+rand(3);
+			}
+		}
+	}
+	NbBaton:=retirer(NbSlot,NbBaton,retire);
+	if(NbBaton=0){
+		win(NbSlot,0);
+	}else{
+		tour(NbSlot,NbBaton);
+	}
+	return 0;
+}
+
+retirer(NbSlot,NbBaton,retire){
+	var bool;
+	for(var att:=0;att:=att+1;att<5){
+		if(bool=0){
+			affichage(NbSlot,NbBaton-retire);
+			bool:=1;
+		}else{
+			affichage(NbSlot,NbBaton);
+			bool:=0;
+		}
+		if(retire=1){
+			print("Batonnet retiré : ");
+		}else{
+			print("Batonnets retirés : ");
+		}
+		print(retire);
+		print("\n");
+		wait(500000000);
+	}
+	return NbBaton-retire;
+}
+
+win(NbSlot,Winner){
+	var i:=0;
+	var sens:=1;
+	for(var delay:=0;delay:=delay+1;delay<40){
+		i:=i+sens;
+		print("\n\n\n\n\n\n\n\n\n\n\n\n");
+		affichage(NbSlot,i);
+		if(i=NbSlot){
+			sens:=0-1;
+		}
+		if(i=0){
+			sens:=1;
+		}
+		if(Winner=0){
+			print("Vous avez gagné !\n\n");
+		}else{
+			print("Vous avez perdu !\n\n");
+		}
+		wait(125000000);
+	}
+	return 0;
 }

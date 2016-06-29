@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Stack;
 
 public class Func extends Node{
@@ -60,7 +59,7 @@ public class Func extends Node{
 		output= output
 				+ newLabel(name + ":")				// La fonction commence par son label
 				+ toASMPopFunc()					// Ensuite nous récupérons les arguments depuis la pile
-				+ bloc.toASM()						// On écrit le code contenu dans la fonction
+				+ bloc.toASM();						// On écrit le code contenu dans la fonction
 		return output;
 	}
 	
@@ -102,7 +101,6 @@ public class Func extends Node{
 						+ newLine("pop eax")
 						+ newLine("mov [" + paramList.get(i).getName() +"],eax");
 			}
-			output+=newLine("push dword [funcReturn]");
 		}
 		output += newLine("push dword [funcReturn]");
 		return output;

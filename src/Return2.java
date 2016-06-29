@@ -16,7 +16,7 @@ public class Return2 extends Node{
 	}
 	
 	public String toASM(){
-		String output = newLine("pop ebx");
+		String output = newLine("pop ecx");
 		if(recur) {
 			output += op.toASMInEAX();
 			if (saveList != null) {
@@ -33,10 +33,9 @@ public class Return2 extends Node{
 			}
 			output += newLine("push eax");
 		} else {
-			output += newLine("pop ebx")
-					+ op.toASM();
+			output += op.toASM();
 		}
-			output += newLine("push ebx")
+			output += newLine("push ecx")
 				+ newLine("ret");
 		return output;
 	}

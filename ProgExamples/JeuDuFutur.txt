@@ -91,7 +91,7 @@ ordi(NbSlot,NbBaton,derniercoup){
 		if(NbBaton=1){
 			retire:=1;
 		}else{
-			var mem := NbBaton+derniercoup
+			var mem := NbBaton+derniercoup;
 			while(mem > 1){
 				mem:=mem-4;
 			}

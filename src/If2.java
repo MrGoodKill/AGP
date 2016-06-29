@@ -34,7 +34,7 @@ public class If2 extends Node {
     
     public String toASM() {
         // La condition s'occupe de faire la comparaison et le saut associé
-    	String output= cond.toASM(compt);
+        String output=lcond.toASM(compt);
         output=output+bloc.toASM();
         // On vérifie qu'il y a bien un else
         if (bloc2!=null){
@@ -64,14 +64,15 @@ public class If2 extends Node {
     public ArrayList<Var> getDeclList() {
         ArrayList<Var> result = new ArrayList<>();
         result.addAll(bloc.getDeclList());
-        result.addAll(bloc2.getDeclList());
+        if(bloc2!=null) result.addAll(bloc2.getDeclList());
         return result;
     }
 
     //Renvoie les returns utilisés dans l'arbre généré par le noeud
     public ArrayList<Return2> getReturnList() {
-        ArrayList<Return2> result = bloc.getReturnList();
-        result.addAll(bloc2.getReturnList());
+        ArrayList<Return2> result = new ArrayList<>();
+        bloc.getReturnList();
+        if(bloc2!=null) result.addAll(bloc2.getReturnList());
         return result;
     }
 
