@@ -14,6 +14,8 @@ public class ListCond extends Node{
         this.cond = cond;
         this.listCond = listCond;
         this.logic=new Operator(logic);
+        children.add(cond);
+        children.add(listCond);
     }
 
     public ListCond(ListCond listCond){

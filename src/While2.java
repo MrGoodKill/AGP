@@ -12,6 +12,8 @@ public class While2 extends Node {
         this.b = b;
         this.compt = condCpt;
         condCpt++;
+        children.add(c);
+        children.add(b);
     }
     
    public String toASM(){

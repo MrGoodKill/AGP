@@ -9,10 +9,13 @@ public class Cond extends Node {
         this.op1 = op1;
         this.op2 = op2;
         this.operator = new Operator(operator);
+        children.add(op1);
+        children.add(op2);
     }
 
     public Cond(ListCond lc) {
         this.lc = lc;
+        children.add(lc);
     }
 
     public String toASM(int compt){

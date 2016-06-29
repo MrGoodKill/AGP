@@ -4,6 +4,7 @@ public class Decaf extends Node {
 
     public Decaf(Affct affct){
         this.affct = affct;
+        children.add(affct);
     }
 
     @Override

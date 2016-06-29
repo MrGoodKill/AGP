@@ -17,6 +17,10 @@ public class For2 extends Node {
         this.b = b;
         this.compt = condCpt;
         condCpt++;
+        children.add(c);
+        children.add(aff);
+        children.add(decaf);
+        children.add(b);
     }
     
    public String toASM(){

@@ -10,6 +10,8 @@ public class Bloc extends Node {
         this.inst = inst;
         this.bloc = bloc;
         this.empty=false;
+        children.add(inst);
+        children.add(bloc);
     }
 
     public Bloc(){

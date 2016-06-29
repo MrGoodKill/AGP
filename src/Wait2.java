@@ -7,6 +7,7 @@ public class Wait2 extends Node {
 	
 	public Wait2(Op op){
 		this.op = op;
+		children.add(op);
 	}
 	
 	@Override

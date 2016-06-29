@@ -13,6 +13,8 @@ public class If2 extends Node {
         this.bloc = bloc;
         this.compt = condCpt;
         condCpt++;
+        children.add(lcond);
+        children.add(bloc);
     }
 
     public If2(ListCond lcond, Bloc bloc, Bloc bloc2){
@@ -21,6 +23,9 @@ public class If2 extends Node {
         this.bloc2 = bloc2;
         this.compt = condCpt;
         condCpt++;
+        children.add(lcond);
+        children.add(bloc);
+        children.add(bloc2);
     }
     
     public String toASM() {
@@ -58,4 +63,5 @@ public class If2 extends Node {
         result.addAll(bloc2.getReturnList());
         return result;
     }
+
 }

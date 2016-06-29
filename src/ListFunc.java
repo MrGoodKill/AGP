@@ -13,6 +13,8 @@ public class ListFunc extends Node{
 		this.function=function;
 		this.listFunc=listFunc;
 		this.empty = false;
+		children.add(function);
+		children.add(listFunc);
 	}
 	
 	public ListFunc(){

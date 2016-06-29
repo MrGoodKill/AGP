@@ -4,6 +4,7 @@ public class Decl extends Node {
 
     public Decl(ListVar listVar){
         this.listVar = listVar;
+        children.add(listVar);
     }
 
     @Override

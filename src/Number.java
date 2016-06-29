@@ -11,14 +11,17 @@ public class Number extends Node {
 
     public Number(Var v) {
         this.v = v;
+        children.add(v);
     }
 
     public Number(Random r) {
         this.r = r;
+        children.add(r);
     }
     
     public Number(CallFunction call) {
         this.call = call;
+        children.add(call);
     }
 
 

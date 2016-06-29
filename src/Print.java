@@ -6,10 +6,12 @@ public class Print extends Node{
 	
 	public Print(Var var){
 		this.var = var;
+        children.add(var);
 	}
 
     public Print(String2 string){
         this.string = string;
+        children.add(string);
     }
 	
 	@Override

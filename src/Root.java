@@ -4,6 +4,7 @@ public class Root extends Node{
 
     public Root(Prog p) {
         this.p = p;
+        children.add(p);
     }
 
     @Override

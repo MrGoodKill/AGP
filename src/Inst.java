@@ -22,21 +22,25 @@ public class Inst extends Node {
     public Inst(Affct affct){
         this.affct = affct;
         type = InstructionType.Affct;
+        children.add(affct);
     }
 
     public Inst(Decl decl){
         this.decl = decl;
         type = InstructionType.Decl;
+        children.add(decl);
     }
 
     public Inst(Decaf decaf){
         this.decaf = decaf;
         type = InstructionType.Decaf;
+        children.add(decaf);
     }
 
     public Inst(If2 if2){
         this.if2 = if2;
         type = InstructionType.If2;
+        children.add(if2);
     }
 
     public Inst(While2 while2){
@@ -52,31 +56,37 @@ public class Inst extends Node {
     public Inst(Print print){
         this.print = print;
         type = InstructionType.Print;
+        children.add(print);
     }
 
     public Inst(Ask ask){
         this.ask = ask;
         type = InstructionType.Ask;
+        children.add(ask);
     }
     
     public Inst(Return2 return2){
     	this.return2 = return2;
     	type = InstructionType.Return2;
+        children.add(return2);
     }
     
     public Inst(CallFunction call){
     	this.call = call;
     	type = InstructionType.Call;
+        children.add(call);
     }
     
     public Inst(Wait2 wait2){
     	this.wait2 = wait2;
     	type = InstructionType.Wait2;
+        children.add(wait2);
     }
 
     public Inst(For2 for2){
         this.for2 = for2;
         type = InstructionType.For2;
+        children.add(for2);
     }
 
 
