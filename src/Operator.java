@@ -2,7 +2,7 @@
 public class Operator extends Node{
 	
 	public enum Op{
-		ADD,SUB,MULT,DIV,EQU,SOE,SUP,INF,IOE;
+		ADD,SUB,MULT,DIV,EQU,SOE,SUP,INF,IOE,AND,OR;
 	}
 	
 	private Op op;
@@ -40,6 +40,12 @@ public class Operator extends Node{
 		case "<=":
 			this.op = Op.IOE;
 			break;
+        case "et":
+            this.op = Op.AND;
+            break;
+        case "ou":
+            this.op = Op.OR;
+            break;
 		}
 	}
 
@@ -47,6 +53,7 @@ public class Operator extends Node{
         return toASM(-1);
     }
 
+    // Attention les conditions sont inversées: on jump si la condition est fausse!
     public String toASM(int compt){
         switch(op) {
             case ADD:
@@ -56,7 +63,8 @@ public class Operator extends Node{
             case MULT:
                 return newLine("imul ebx");
             case DIV:
-                return 	newLine("mov edx,0") +
+                // idiv utilise le registre edx comme poids fort, on le met donc à 0 pour éviter toute erreur
+            	return 	newLine("mov edx,0") +
                 		newLine("mov ecx,eax") +
                 		newLine("mov eax,ebx") +
                 		newLine("idiv ecx");
@@ -75,4 +83,21 @@ public class Operator extends Node{
         }
     }
 
+    // On peut potentiellement avoir besoin de faire un saut quand la condition est vraie
+    public String toASMNEG(String label){
+        switch(op) {
+            case EQU:
+                return newLine("je " + label);
+            case INF:
+                return newLine("jnge " + label);
+            case IOE:
+                return newLine("jng " + label);
+            case SOE:
+                return newLine("jnl " + label);
+            case SUP:
+                return newLine("jnle " + label);
+            default:
+                return newLine("asm failed for operator");
+        }
+    }
 }
