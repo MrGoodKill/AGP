@@ -79,6 +79,7 @@ public class Func extends Node{
 				+ newLine("mov [funcReturn],eax");
 		if(isRecur()) {
 			for(Return2 r:returnList) {
+				System.out.println("RETURN DETECT");
 				r.setRecur(true);
 			}
 			int decalage = 0;

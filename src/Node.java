@@ -20,17 +20,19 @@ public class Node {
         return "";
     }
 
-    // 
+    //code ASM à rajouter à la section .data
     public String getGlobalData(){
         return newLabel("")+"temp:\tdd\t0"+globalData;
     }
 
+    //code ASM à rajouter à la section .text
     public String getGlobalASM(){
     	return globalASM;
     }
 
+    //nom de la fonction courante lors du parsing, ceci sert à pouvoir distinger la variable
+    // a dans main qui s'appellera main$a et celle de fonction qui s'écrira fonction$a
     public String getGlobalFctName(){return fctName;}
-
     public void setGlobalFctName(String fctName){Node.fctName=fctName;}
     
     // Fonction d'indentation
