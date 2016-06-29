@@ -17,12 +17,12 @@ public class Main {
 
         System.out.println("FICHIER DE BASE :\n\n");
 
-        String content = new Scanner(new FileInputStream("fibonacci.txt"), "UTF-8").useDelimiter("\\Z").next();
+        String content = new Scanner(new FileInputStream("test.txt"), "UTF-8").useDelimiter("\\Z").next();
 
         System.out.println(content+"\n\n");
         System.out.println("TRADUCTION :\n");
 
-        HelloLexer lexer = new HelloLexer( new ANTLRFileStream("fibonacci.txt", "UTF-8"));
+        HelloLexer lexer = new HelloLexer( new ANTLRFileStream("test.txt", "UTF-8"));
         CommonTokenStream tokens = new CommonTokenStream( lexer );
         HelloParser parser = new HelloParser( tokens );
         Root tree = parser.r().root;

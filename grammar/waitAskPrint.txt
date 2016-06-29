@@ -1,4 +1,4 @@
-﻿main(n){
+main(n){
 	print("Impression avant attente /n");
 	wait(100000000);
 	print("Attente finie, trop longue ou pas ? /n");
